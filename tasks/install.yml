@@ -1,0 +1,44 @@
+---
+- name: 'Check current MySQL Exporter version'
+  ansible.builtin.command:
+    cmd: '{{ mysqld_exporter_install_path }}/mysqld_exporter --version'
+  failed_when: false
+  changed_when: false
+  register: _mysqld_exporter_version_check
+
+- name: 'Download and unarchive Postgres Exporter'
+  block:
+    - name: 'Set archive fullname and temporary directory for MySQL Exporter'
+      ansible.builtin.set_fact:
+        _mysqld_exporter_archive: '{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
+        _mysqld_exporter_tmp_dir: '{{ mysqld_exporter_archive_name }}'
+
+    - name: 'Download MySQL Exporter binary to local folder'
+      ansible.builtin.get_url:
+        url: '{{ mysqld_exporter_download_url }}/{{ _mysqld_exporter_archive }}'
+        dest: '/tmp/{{ _mysqld_exporter_archive }}'
+        mode: 0644
+      delegate_to: localhost
+      check_mode: false
+
+    - name: 'Unarchive MySQL Exporter binary'
+      ansible.builtin.unarchive:
+        src: '/tmp/{{ _mysqld_exporter_archive }}'
+        dest: '/tmp'
+        creates: '/tmp/{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
+      delegate_to: localhost
+      check_mode: false
+
+    - name: 'Copy MySQL Exporter binary into place'
+      ansible.builtin.copy:
+        src: '/tmp/{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
+        dest: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
+        owner: '{{ mysqld_exporter_user }}'
+        group: '{{ mysqld_exporter_group }}'
+        mode: 0755
+      notify: Restart MySQL Exporter
+      when: not ansible_check_mode
+      become: true
+  when:
+    - _mysqld_exporter_version_check.stdout is not defined or
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stdout

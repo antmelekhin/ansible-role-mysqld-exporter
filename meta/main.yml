@@ -1,0 +1,30 @@
+---
+galaxy_info:
+  author: Melekhin Anton
+  role_name: mysqld_exporter
+  namespace: antmelekhin
+  description: An Ansible role for install, configure and update MySQL Exporter.
+
+  license: MIT
+
+  min_ansible_version: '2.9'
+
+  platforms:
+    - name: EL
+      versions:
+        - '7'
+        - '8'
+    - name: Ubuntu
+      versions:
+        - 'bionic'
+        - 'focal'
+    - name: Debian
+      versions:
+        - 'bullseye'
+
+  galaxy_tags:
+    - monitoring
+    - prometheus
+    - mysqld_exporter
+
+dependencies: []

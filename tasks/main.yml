@@ -1,0 +1,20 @@
+---
+- name: 'Check that required string variables are defined'
+  ansible.builtin.assert:
+    that: '{{ required_vars }} is defined and {{ required_vars }}'
+    fail_msg: '{{ required_vars }} needs to be set for the role to work'
+    success_msg: 'Required variables {{ required_vars }} is defined'
+  with_items:
+    - mysqld_exporter_mysql_user
+    - mysqld_exporter_mysql_password
+  loop_control:
+    loop_var: required_vars
+
+- name: 'Include tasks for preparing to install MySQL Exporter'
+  ansible.builtin.import_tasks: 'pre-install.yml'
+
+- name: 'Include tasks for Installing MySQL Exporter'
+  ansible.builtin.import_tasks: 'install.yml'
+
+- name: 'Include tasks for Configure MySQL Exporter'
+  ansible.builtin.import_tasks: 'configure.yml'
