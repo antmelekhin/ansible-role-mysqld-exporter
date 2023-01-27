@@ -16,7 +16,6 @@
     - name: 'Verify mysqld_exporter is responding to requests'
       ansible.builtin.uri:
         url: 'http://{{ ansible_host }}:9104/metrics'
-      delegate_to: localhost
       register: _result
       until: _result.status == 200
       retries: 120

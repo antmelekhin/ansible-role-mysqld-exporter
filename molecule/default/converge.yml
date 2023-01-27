@@ -1,7 +1,16 @@
 ---
-- name: Converge
+- name: 'Prepare an Ansible host for Github Actions'
+  hosts: localhost
+  tasks:
+    - name: 'Install tar for delegated to localhost tasks'
+      apk:
+        name: tar
+        update_cache: true
+      when: ansible_os_family == 'Alpine'
+
+- name: 'Converge'
   hosts: all
   roles:
-    - role: ansible-role-mysqld-exporter
+    - role: antmelekhin.mysqld_exporter
       mysqld_exporter_mysql_user: 'exporter'
       mysqld_exporter_mysql_password: 'Pa$$word'
