@@ -1,5 +1,6 @@
 ---
 - name: 'Prepare to install MySQL Exporter'
+  become: true
   block:
     - name: 'Create MySQL Exporter group'
       ansible.builtin.group:
@@ -15,4 +16,3 @@
         system: true
         createhome: false
         shell: '/bin/false'
-  become: true
