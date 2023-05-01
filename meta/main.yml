@@ -25,6 +25,7 @@ galaxy_info:
   galaxy_tags:
     - monitoring
     - prometheus
-    - mysqld_exporter
+    - mysql
+    - mariadb
 
 dependencies: []
