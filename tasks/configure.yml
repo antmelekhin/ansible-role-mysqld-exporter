@@ -9,12 +9,6 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0644
-      register: _mysqld_exporter_service
-
-    - name: 'Reload systemd daemon if unit file is changed'
-      ansible.builtin.systemd:
-        daemon_reload: true
-      when: _mysqld_exporter_service is changed
       notify: Restart MySQL Exporter
 
     - name: 'Configure .cnf file for MySQL Exporter'
@@ -29,5 +23,5 @@
     - name: 'Ensure MySQL Exporter is running and enabled at boot'
       ansible.builtin.systemd:
         name: mysqld_exporter
-        state: started
         enabled: true
+        state: started
