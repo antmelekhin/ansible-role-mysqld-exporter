@@ -1,4 +1,9 @@
 ---
+- name: 'Check if MySQL Exporter is installed'
+  ansible.builtin.stat:
+    path: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
+  register: _mysqld_exporter_is_installed
+
 - name: 'Check current MySQL Exporter version'
   ansible.builtin.command:
     cmd: '{{ mysqld_exporter_install_path }}/mysqld_exporter --version'
@@ -6,12 +11,18 @@
   changed_when: false
   register: _mysqld_exporter_version_check
 
-- name: 'Download and unarchive Postgres Exporter'
+- name: 'Download and unarchive MySQL Exporter'
+  when:
+    - not _mysqld_exporter_is_installed.stat.exists or
+      ( _mysqld_exporter_version_check.stderr_lines | length > 0 and
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stderr_lines[0].split(" ")[2] ) or
+      ( _mysqld_exporter_version_check.stdout_lines | length > 0 and
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stdout_lines[0].split(" ")[2] )
   block:
     - name: 'Set archive fullname and temporary directory for MySQL Exporter'
       ansible.builtin.set_fact:
         _mysqld_exporter_archive: '{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
-        _mysqld_exporter_tmp_dir: '{{ mysqld_exporter_archive_name }}'
+        _mysqld_exporter_tmp_dir: '/tmp/{{ mysqld_exporter_archive_name }}'
 
     - name: 'Download MySQL Exporter binary to local folder'
       ansible.builtin.get_url:
@@ -25,13 +36,13 @@
       ansible.builtin.unarchive:
         src: '/tmp/{{ _mysqld_exporter_archive }}'
         dest: '/tmp'
-        creates: '/tmp/{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
+        creates: '{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
       delegate_to: localhost
       check_mode: false
 
     - name: 'Copy MySQL Exporter binary into place'
       ansible.builtin.copy:
-        src: '/tmp/{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
+        src: '{{ _mysqld_exporter_tmp_dir }}/mysqld_exporter'
         dest: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
@@ -39,6 +50,3 @@
       notify: Restart MySQL Exporter
       when: not ansible_check_mode
       become: true
-  when:
-    - _mysqld_exporter_version_check.stdout is not defined or
-      mysqld_exporter_version not in _mysqld_exporter_version_check.stdout

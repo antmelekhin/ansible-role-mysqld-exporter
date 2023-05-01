@@ -1,5 +1,6 @@
 ---
 - name: 'Configure and start MySQL Exporter'
+  become: true
   block:
     - name: 'Configure SystemD unit for MySQL Exporter'
       ansible.builtin.template:
@@ -30,4 +31,3 @@
         name: mysqld_exporter
         state: started
         enabled: true
-  become: true

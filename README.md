@@ -8,12 +8,21 @@ Requirements
 
 - Supported version of Ansible: 2.9 and highter.
 - `gnu-tar` on Mac as deployer host (`brew install gnu-tar`).
-- List of all supported platforms described in role meta.
+- Supported platforms:
+  - RHEL
+    - 7
+    - 8
+  - Ubuntu
+    - 20.04
+    - 22.04
+  - Debian
+    - 10
+    - 11
 
 Используемые переменные
 -----------------------
 
-- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.13.0`).
+- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.14.0`).
 - `mysqld_exporter_package_name` MySQL Exporter archive name.
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
 - `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter.
