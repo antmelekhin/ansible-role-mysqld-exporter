@@ -7,9 +7,10 @@ driver:
 lint: |
   set -e
   yamllint .
+  ansible-lint
 platforms:
   - name: instance
-    image: 'geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest'
+    image: 'antmelekhin/docker-systemd:${MOLECULE_DISTRO:-ubuntu-20.04}'
     command: "${MOLECULE_DOCKER_COMMAND:-'/lib/systemd/systemd'}"
     published_ports:
       - 0.0.0.0:9104:9104/udp
@@ -22,5 +23,7 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 verifier:
   name: ansible
