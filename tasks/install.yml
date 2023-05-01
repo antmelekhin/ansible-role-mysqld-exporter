@@ -1,4 +1,9 @@
 ---
+- name: 'Check if MySQL Exporter is installed'
+  ansible.builtin.stat:
+    path: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
+  register: _mysqld_exporter_is_installed
+
 - name: 'Check current MySQL Exporter version'
   ansible.builtin.command:
     cmd: '{{ mysqld_exporter_install_path }}/mysqld_exporter --version'
@@ -8,8 +13,11 @@
 
 - name: 'Download and unarchive MySQL Exporter'
   when:
-    - _mysqld_exporter_version_check.stderr_lines is not defined or
-      mysqld_exporter_version not in _mysqld_exporter_version_check.stderr_lines[0].split(" ")[2]
+    - not _mysqld_exporter_is_installed.stat.exists or
+      ( _mysqld_exporter_version_check.stderr_lines | length > 0 and
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stderr_lines[0].split(" ")[2] ) or
+      ( _mysqld_exporter_version_check.stdout_lines | length > 0 and
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stdout_lines[0].split(" ")[2] )
   block:
     - name: 'Set archive fullname and temporary directory for MySQL Exporter'
       ansible.builtin.set_fact:
