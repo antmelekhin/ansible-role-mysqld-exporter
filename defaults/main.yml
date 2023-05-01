@@ -1,6 +1,6 @@
 ---
 # See available releases: https://github.com/prometheus/mysqld_exporter/releases
-mysqld_exporter_version: '0.13.0'
+mysqld_exporter_version: '0.14.0'
 mysqld_exporter_archive_name: 'mysqld_exporter-{{ mysqld_exporter_version }}.linux-{{ _mysqld_exporter_architecture }}'
 mysqld_exporter_archive_extension: 'tar.gz'
 mysqld_exporter_download_url: 'https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}'

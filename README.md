@@ -13,7 +13,7 @@ Requirements
 Используемые переменные
 -----------------------
 
-- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.13.0`).
+- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.14.0`).
 - `mysqld_exporter_package_name` MySQL Exporter archive name.
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
 - `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter.
