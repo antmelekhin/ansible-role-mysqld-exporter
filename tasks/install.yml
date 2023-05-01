@@ -8,8 +8,8 @@
 
 - name: 'Download and unarchive MySQL Exporter'
   when:
-    - _mysqld_exporter_version_check.stdout is not defined or
-      mysqld_exporter_version not in _mysqld_exporter_version_check.stdout
+    - _mysqld_exporter_version_check.stderr_lines is not defined or
+      mysqld_exporter_version not in _mysqld_exporter_version_check.stderr_lines[0].split(" ")[2]
   block:
     - name: 'Set archive fullname and temporary directory for MySQL Exporter'
       ansible.builtin.set_fact:
