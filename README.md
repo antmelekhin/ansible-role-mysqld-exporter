@@ -32,6 +32,10 @@ Requirements
 - `mysqld_exporter_mysql_user` and `mysqld_exporter_mysql_password` `(Required)` MySQL username and password (default: `''`).
 - `mysqld_exporter_mysql_host` MySQL host (default: `localhost`).
 - `mysqld_exporter_mysql_port` MySQL port (default: `3306`).
+- `mysqld_exporter_web_listen_address` Address to listen on for web interface and telemetry (default: `0.0.0.0`).
+- `mysqld_exporter_web_listen_port` The port to bind to (default: `9104`).
+- `mysqld_exporter_web_telemetry_path` The path at which to serve metrics (default: `/metrics`).
+- `mysqld_exporter_log_level` MySQL Exporter logging level (default: `info`).
 - `mysqld_exporter_collect` Collectors list (default: `[]`).
 
 Dependencies

@@ -10,11 +10,13 @@ Restart=always
 User={{ mysqld_exporter_user }}
 Group={{ mysqld_exporter_group }}
 ExecStart={{ mysqld_exporter_install_path }}/mysqld_exporter \
---config.my-cnf {{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf \
+    --web.listen-address={{ mysqld_exporter_web_listen_address }}:{{ mysqld_exporter_web_listen_port }} \
+    --web.telemetry-path {{ mysqld_exporter_web_telemetry_path }} \
+    --config.my-cnf {{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf \
 {% for collect in mysqld_exporter_collect -%}
---{{ collect }} \
+    --{{ collect }} \
 {% endfor -%}
---web.listen-address=0.0.0.0:9104
+    --log.level {{ mysqld_exporter_log_level }}
 
 [Install]
 WantedBy=multi-user.target
