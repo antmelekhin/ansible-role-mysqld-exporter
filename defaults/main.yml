@@ -26,4 +26,4 @@ mysqld_exporter_web_telemetry_path: '/metrics'
 mysqld_exporter_log_level: 'info'
 
 # See available collector-flags: https://github.com/prometheus/mysqld_exporter#collector-flags
-mysqld_exporter_collect: []
+mysqld_exporter_collectors: []

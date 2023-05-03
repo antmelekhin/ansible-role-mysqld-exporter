@@ -36,7 +36,7 @@ Requirements
 - `mysqld_exporter_web_listen_port` The port to bind to (default: `9104`).
 - `mysqld_exporter_web_telemetry_path` The path at which to serve metrics (default: `/metrics`).
 - `mysqld_exporter_log_level` MySQL Exporter logging level (default: `info`).
-- `mysqld_exporter_collect` Collectors list (default: `[]`).
+- `mysqld_exporter_collectors` Collectors list (default: `[]`).
 
 Dependencies
 ------------
