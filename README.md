@@ -46,16 +46,34 @@ None.
 Example Playbook
 ----------------
 
-- Install and configure `MySQL Exporter`:
+- Install and configure `MySQL Exporter`. Also, you need to create a user to connect the exporter to a database instance:
 
   ```yaml
   ---
   - name: 'Setup MySQL Exporter'
     hosts: all
+    vars:
+      exporter_user_name: 'exporter'
+      exporter_user_password: 'Pa$$w0rd'
+      db_host: 'localhost'
+      db_login_user: 'root'
+      db_login_password: '$ecretP4ssword!'
+
+    pre_tasks:
+      - name: 'Create mysql user'
+        mysql_user:
+          name: '{{ exporter_user_name }}'
+          password: '{{ exporter_user_password }}'
+          host: '{{ db_host }}'
+          priv: '*.*:SELECT,PROCESS,REPLICATION CLIENT'
+          login_user: '{{ db_login_user }}'
+          login_password: '{{ db_login_password }}'
+          state: present
+
     roles:
       - role: ansible-role-mysqld-exporter
-        mysqld_exporter_mysql_user: 'exporter'
-        mysqld_exporter_mysql_password: 'Pa$$word'
+        mysqld_exporter_mysql_user: '{{ exporter_user_name }}'
+        mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
   ```
 
 License

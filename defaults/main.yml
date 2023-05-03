@@ -11,8 +11,9 @@ mysqld_exporter_group: '{{ mysqld_exporter_user }}'
 
 # MySQL Exporter directories.
 mysqld_exporter_install_path: '/usr/local/bin'
-mysqld_exporter_config_path: '/usr/local/etc'
+mysqld_exporter_config_path: '/usr/local/etc/mysqld_exporter'
 
+# MySQL Exporter connection settings.
 mysqld_exporter_mysql_user: ''
 mysqld_exporter_mysql_password: ''
 mysqld_exporter_mysql_host: 'localhost'
