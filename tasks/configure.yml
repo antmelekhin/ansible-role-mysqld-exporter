@@ -20,6 +20,19 @@
         mode: 0600
       notify: Restart MySQL Exporter
 
+    - name: 'Configure web config file for MySQL Exporter'
+      ansible.builtin.template:
+        src: 'web_config.yaml.j2'
+        dest: '{{ mysqld_exporter_config_path }}/web_config.yaml'
+        owner: '{{ mysqld_exporter_user }}'
+        group: '{{ mysqld_exporter_group }}'
+        mode: 0600
+      notify: Restart MySQL Exporter
+      when:
+        - mysqld_exporter_tls_server_config | length or
+          mysqld_exporter_http_server_config | length or
+          mysqld_exporter_basic_auth_users | length
+
     - name: 'Ensure MySQL Exporter is running and enabled at boot'
       ansible.builtin.systemd:
         name: mysqld_exporter
