@@ -10,23 +10,27 @@ Requirements
 - `gnu-tar` on Mac as deployer host (`brew install gnu-tar`).
 - `passlib` on a deployer host when using the basic authentication feature (`python3 -m pip install passlib[bcrypt]`).
 - Supported platforms:
-  - RHEL
-    - 7
-    - 8
-  - Ubuntu
-    - 20.04
-    - 22.04
+  - Amazon Linux
+    - 2023
   - Debian
     - 10
     - 11
+  - RHEL
+    - 7
+    - 8
+    - 9
+  - Ubuntu
+    - 18.04
+    - 20.04
+    - 22.04
 
-Используемые переменные
------------------------
+Role Variables
+--------------
 
 - `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.14.0`).
-- `mysqld_exporter_package_name` MySQL Exporter archive name.
+- `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.14.0.linux-amd64`).
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
-- `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter.
+- `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.14.0`).
 - `mysqld_exporter_user` and `mysqld_exporter_group` Unix username and group (default: `mysqld_exporter`).
 - `mysqld_exporter_install_path` Path to MySQL Exporter installation directory (default: `/usr/local/bin`).
 - `mysqld_exporter_config_path` Path to MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
@@ -36,12 +40,23 @@ Requirements
 - `mysqld_exporter_web_listen_address` Address to listen on for web interface and telemetry (default: `0.0.0.0`).
 - `mysqld_exporter_web_listen_port` The port to bind to (default: `9104`).
 - `mysqld_exporter_web_telemetry_path` The path at which to serve metrics (default: `/metrics`).
-- `mysqld_exporter_log_level` MySQL Exporter logging level (default: `info`).
-- `mysqld_exporter_log_format` Output format of log messages (default: `logfmt`).
 - `mysqld_exporter_tls_server_config` Certificate and key files for server to use to authenticate to client.
 - `mysqld_exporter_http_server_config` Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.
 - `mysqld_exporter_basic_auth_users` Users and password for basic authentication. Passwords are automatically hashed with bcrypt.
 - `mysqld_exporter_collectors` Collectors list (default: `[]`).
+- `mysqld_exporter_log_level` MySQL Exporter logging level.
+
+  Available values:
+  - `debug`
+  - `info` (default)
+  - `warn`
+  - `error`
+
+- `mysqld_exporter_log_format` Output format of log messages.
+
+  Available values:
+  - `logfmt` (default)
+  - `json`
 
 Dependencies
 ------------
