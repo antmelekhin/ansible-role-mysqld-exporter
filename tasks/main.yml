@@ -4,7 +4,7 @@
     that: '{{ required_vars }} is defined and {{ required_vars }}'
     fail_msg: '{{ required_vars }} needs to be set for the role to work'
     success_msg: 'Required variables {{ required_vars }} is defined'
-  with_items:
+  loop:
     - mysqld_exporter_mysql_user
     - mysqld_exporter_mysql_password
   loop_control:
