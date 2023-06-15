@@ -1,0 +1,60 @@
+---
+branches: ['main']
+preset: 'conventionalcommits'
+ci: false
+
+verifyConditions:
+  - '@semantic-release/changelog'
+  - '@semantic-release/git'
+  - '@semantic-release/github'
+
+analyzeCommits:
+  - path: '@semantic-release/commit-analyzer'
+    releaseRules:
+      - type: 'refactor'
+        release: 'patch'
+      - type: 'style'
+        release: 'patch'
+      - type: 'test'
+        release: 'patch'
+
+generateNotes:
+  - path: '@semantic-release/release-notes-generator'
+    writerOpts:
+      groupBy: 'type'
+      commitGroupsSort: 'title'
+      commitsSort: 'header'
+    linkCompare: true
+    linkReferences: true
+    presetConfig:
+      types:
+        - type: 'docs'
+          section: 'Docs'
+          hidden: false
+        - type: 'fix'
+          section: 'Fixes'
+          hidden: false
+        - type: 'refactor'
+          section: 'Refactor'
+          hidden: false
+        - type: 'style'
+          section: 'Style'
+          hidden: false
+        - type: 'test'
+          section: 'Tests'
+          hidden: false
+
+prepare:
+  - path: '@semantic-release/changelog'
+    changelogFile: 'CHANGELOG.md'
+    changelogTitle: '# Changelog'
+  - path: '@semantic-release/git'
+    assets: ['CHANGELOG.md']
+    message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+
+publish:
+  - path: '@semantic-release/github'
+
+success: false
+
+fail: false
