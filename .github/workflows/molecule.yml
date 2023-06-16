@@ -13,23 +13,25 @@ jobs:
     strategy:
       matrix:
         include:
-          - distro: 'rockylinux-8'
-            command: '/usr/sbin/init'
-          - distro: 'ubuntu-20.04'
-            command: '/lib/systemd/systemd'
           - distro: 'debian-11'
-            command: '/lib/systemd/systemd'
+            scenario: 'default'
+          - distro: 'rockylinux-8'
+            scenario: 'default'
+          - distro: 'ubuntu-20.04'
+            scenario: 'default'
+          - distro: 'ubuntu-22.04'
+            scenario: 'tls-and-basic-auth'
 
     steps:
       - name: 'Checkout the codebase'
         uses: actions/checkout@v3
 
-      - name: 'Test role'
+      - name: 'Testing role'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
+          molecule_args: --scenario-name ${{ matrix.scenario }}
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-          MOLECULE_DOCKER_COMMAND: ${{ matrix.command }}
