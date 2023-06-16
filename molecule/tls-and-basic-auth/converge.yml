@@ -33,7 +33,6 @@
         src: '{{ cert.src }}'
         dest: '{{ cert.dest }}'
         mode: 0644
-        remote_src: true
       loop:
         - src: '/tmp/certificate.cert'
           dest: '{{ mysqld_exporter_tls_server_config.cert_file }}'
