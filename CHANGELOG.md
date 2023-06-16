@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.1...v1.1.2) (2023-06-16)
+
+
+### Tests
+
+* **fix:** rm `remote_src` ([a6d7bf4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/a6d7bf438c253f5abd0f5cee2fa8419639109f2d))
+
 ## [1.1.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.0...v1.1.1) (2023-06-16)
 
 
