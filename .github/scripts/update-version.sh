@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # Git commiter
 GIT_USER="${GITHUB_ACTOR}"
 GIT_MAIL="${GITHUB_ACTOR}@users.noreply.github.com"
@@ -10,16 +12,16 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NO_COLOR='\e[0m'
 
+# Get current version
+CURRENT_VERSION="$(awk '/^.*_version:/{print $2}' 'defaults/main.yml' | tr -d \')"
+
 # Get latest version
 SOFTWARE="$1"
 URL="https://api.github.com/repos/prometheus/${SOFTWARE}/releases/latest"
 LATEST_VERSION="$(curl --silent $URL | jq '.tag_name' | tr -d '"v')"
 
-# Get current version
-CURRENT_VERSION="$(awk '/^*_version:/{print $2}' 'defaults/main.yml' | tr -d \')"
-
 # Compare current and latest versions
-if [ $CURRENT_VERSION == $LATEST_VERSION ]; then
+if [[ $CURRENT_VERSION == $LATEST_VERSION ]]; then
     echo -e "${GREEN}Newest version is used.${NO_COLOR}"
     exit 0
 fi
@@ -42,7 +44,7 @@ if [ "${REMOTE_BRANCH}" == null ] ; then
     git checkout -b "${UPDATE_VERSION_BRANCH}"
 
     # Push new version
-    git add defaults/main.yml
+    git add defaults/main.yml README.md
     git commit --signoff -m "${UPDATE_VERSION_COMMIT}"
     
     echo -e "${GREEN}Pushing to ${UPDATE_VERSION_BRANCH} branch.${NO_COLOR}"
