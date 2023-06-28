@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.1.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.2...v1.1.3) (2023-06-28)
+
+
+### Continuous Integration
+
+* add release type `improv` ([54cc7ea](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/54cc7ea153b1ffcd6a465b4f90cd338613e499df))
+* fix `update-version.sh` script ([c3a9fd7](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/c3a9fd7514f5a9d1843a2507ba9c7733d0eb7be9))
+* rm `tagFormat` option, update `commit-analyzer` and `release-notes-generator` blocks ([e0adefa](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/e0adefabba56535004b13350a016186127761d94))
+
+
+### Documentation
+
+* update README ([ec157ae](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/ec157ae65c6b91ae9ed69948979ba5a2aa8fd230))
+
+
+### Fixes
+
+* **version:** mysqld_exporter updated to `0.15.0` release ([#7](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/7)) ([a7f52b7](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/a7f52b799ca7cb320e750d10cd245bf163b56890))
+
 ## [1.1.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.1...v1.1.2) (2023-06-16)
 
 ### Tests
