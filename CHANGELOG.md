@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.4...v1.2.0) (2023-07-04)
+
+
+### Features
+
+* add selinux support ([1087296](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/10872963a4185e0175f58bf85769ac252e69ab25))
+
 ## [1.1.4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.3...v1.1.4) (2023-07-04)
 
 
