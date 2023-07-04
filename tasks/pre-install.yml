@@ -6,7 +6,6 @@
       ansible.builtin.group:
         name: '{{ mysqld_exporter_group }}'
         system: true
-      become: true
 
     - name: 'Create MySQL Exporter user'
       ansible.builtin.user:
