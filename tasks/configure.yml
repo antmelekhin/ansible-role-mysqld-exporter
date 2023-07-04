@@ -9,7 +9,7 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0644
-      notify: Restart MySQL Exporter
+      notify: 'Restart MySQL Exporter'
 
     - name: 'Configure .cnf file for MySQL Exporter'
       ansible.builtin.template:
@@ -18,7 +18,7 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: Restart MySQL Exporter
+      notify: 'Restart MySQL Exporter'
 
     - name: 'Configure web config file for MySQL Exporter'
       ansible.builtin.template:
@@ -27,7 +27,7 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: Restart MySQL Exporter
+      notify: 'Restart MySQL Exporter'
       when:
         - mysqld_exporter_tls_server_config | length or
           mysqld_exporter_http_server_config | length or

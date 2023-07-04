@@ -47,6 +47,6 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0755
-      notify: Restart MySQL Exporter
+      notify: 'Restart MySQL Exporter'
       when: not ansible_check_mode
       become: true
