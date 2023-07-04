@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.3...v1.1.4) (2023-07-04)
+
+
+### Fixes
+
+* rm become ([49bcaa4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/49bcaa4019752b8a4bb0e997923302d3652c8ce6))
+
+
+### Styles
+
+* add quotes in notify name ([ea7b06d](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/ea7b06d4d1c075ef26c7747ed86923c57f82fed2))
+
 ## [1.1.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.2...v1.1.3) (2023-06-28)
 
 
