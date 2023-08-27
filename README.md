@@ -6,7 +6,7 @@ An Ansible role for install, configure and update [MySQL Exporter](https://githu
 Requirements
 ------------
 
-- Supported version of Ansible: 2.9 and highter.
+- Supported version of Ansible: 2.12 and highter.
 - `gnu-tar` on Mac as deployer host (`brew install gnu-tar`).
 - `passlib` on a deployer host when using the basic authentication feature (`python3 -m pip install passlib[bcrypt]`).
 - `cryptography` or `pyOpenSSL` on a deployer host when using the TLS feature.
@@ -16,6 +16,7 @@ Requirements
   - Debian
     - 10
     - 11
+    - 12
   - RHEL
     - 7
     - 8

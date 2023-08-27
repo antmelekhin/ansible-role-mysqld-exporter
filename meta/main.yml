@@ -7,7 +7,7 @@ galaxy_info:
 
   license: MIT
 
-  min_ansible_version: '2.9'
+  min_ansible_version: '2.12'
 
   platforms:
     - name: Amazon Linux
@@ -17,6 +17,7 @@ galaxy_info:
       versions:
         - 'buster'
         - 'bullseye'
+        - 'bookworm'
     - name: EL
       versions:
         - '7'
