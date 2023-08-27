@@ -51,7 +51,7 @@
         state: present
 
     - name: 'Linux | Allow MySQL Exporter port in SELinux'
-      seport:
+      community.general.seport:
         ports: '{{ mysqld_exporter_web_listen_port }}'
         proto: tcp
         setype: ssh_port_t

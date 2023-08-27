@@ -3,7 +3,7 @@
   hosts: localhost
   tasks:
     - name: 'Install tar for delegated to localhost tasks'
-      apk:
+      community.general.apk:
         name: tar
         update_cache: true
       when: ansible_os_family == 'Alpine'
