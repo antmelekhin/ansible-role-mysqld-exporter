@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.0...v1.2.1) (2023-08-27)
+
+
+### Fixes
+
+* add fqcn for all modules ([dc72d5b](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/dc72d5b165d802f8a5c18d7af6882dc9735995bd))
+
+
+### Tests
+
+* add tox ([11df2e1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/11df2e13c37debf6a6e5e70bd5601da5a47dba07))
+
 ## [1.2.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.1.4...v1.2.0) (2023-07-04)
 
 
