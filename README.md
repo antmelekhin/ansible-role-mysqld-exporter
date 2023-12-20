@@ -29,10 +29,10 @@ Requirements
 Role Variables
 --------------
 
-- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.15.0`).
-- `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.15.0.linux-amd64`).
+- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.15.1`).
+- `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.15.1.linux-amd64`).
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
-- `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.0`).
+- `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
 - `mysqld_exporter_user` and `mysqld_exporter_group` Unix username and group (default: `mysqld_exporter`).
 - `mysqld_exporter_install_path` Path to MySQL Exporter installation directory (default: `/usr/local/bin`).
 - `mysqld_exporter_config_path` Path to MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
