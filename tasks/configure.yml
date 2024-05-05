@@ -35,9 +35,9 @@
 
     - name: 'Ensure MySQL Exporter is running and enabled at boot'
       ansible.builtin.systemd:
-        name: mysqld_exporter
+        name: 'mysqld_exporter'
         enabled: true
-        state: started
+        state: 'started'
 
 - name: 'Linux | Configure SELinux when is already installed'
   when: ansible_selinux.status == 'enabled'
@@ -48,11 +48,11 @@
         name: "{{ ['policycoreutils-python']
           if ansible_python_version is version('3', '<')
           else ['policycoreutils-python-utils'] }}"
-        state: present
+        state: 'present'
 
     - name: 'Linux | Allow MySQL Exporter port in SELinux'
       community.general.seport:
         ports: '{{ mysqld_exporter_web_listen_port }}'
-        proto: tcp
-        setype: ssh_port_t
-        state: present
+        proto: 'tcp'
+        setype: 'ssh_port_t'
+        state: 'present'
