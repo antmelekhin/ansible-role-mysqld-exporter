@@ -1,7 +1,7 @@
 MySQL Exporter
 ==============
 
-An Ansible role for install, configure and update [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
+An Ansible role to install, configure and update [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
 
 Requirements
 ------------
