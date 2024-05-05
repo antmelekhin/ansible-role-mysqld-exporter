@@ -10,11 +10,11 @@
   loop_control:
     loop_var: required_vars
 
-- name: 'Include tasks for preparing to install MySQL Exporter'
+- name: 'Include tasks to prepare to install MySQL Exporter'
   ansible.builtin.import_tasks: 'pre-install.yml'
 
-- name: 'Include tasks for Installing MySQL Exporter'
+- name: 'Include tasks to install MySQL Exporter'
   ansible.builtin.import_tasks: 'install.yml'
 
-- name: 'Include tasks for Configure MySQL Exporter'
+- name: 'Include tasks to configure MySQL Exporter'
   ansible.builtin.import_tasks: 'configure.yml'

@@ -1,7 +1,7 @@
 MySQL Exporter
 ==============
 
-An Ansible role for install, configure and update [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
+An Ansible role to install, configure and update [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
 
 Requirements
 ------------
@@ -33,7 +33,7 @@ Role Variables
 - `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.15.1.linux-amd64`).
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
 - `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
-- `mysqld_exporter_user` and `mysqld_exporter_group` Unix username and group (default: `mysqld_exporter`).
+- `mysqld_exporter_user` and `mysqld_exporter_group` Unix user and group that will be created (default: `mysqld_exporter`).
 - `mysqld_exporter_install_path` Path to MySQL Exporter installation directory (default: `/usr/local/bin`).
 - `mysqld_exporter_config_path` Path to MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
 - `mysqld_exporter_mysql_user` and `mysqld_exporter_mysql_password` `(Required)` Username and password to be used for connecting to MySQL Server (default: `''`).
@@ -68,53 +68,53 @@ None.
 Example Playbook
 ----------------
 
-- Install and configure `MySQL Exporter`. Also, you need to create a user to connect the exporter to a database instance:
+Install and configure `MySQL Exporter`. Also, you need to create a user to connect the exporter to a database instance:
 
-  ```yaml
-  ---
-  - name: 'Setup MySQL Exporter'
-    hosts: all
-    vars:
-      exporter_user_name: 'exporter'
-      exporter_user_password: 'Pa$$w0rd'
-      db_host: 'localhost'
-      db_login_user: 'root'
-      db_login_password: '$ecretP4ssword!'
+```yaml
+---
+- name: 'Setup MySQL Exporter'
+  hosts: all
+  vars:
+    exporter_user_name: 'exporter'
+    exporter_user_password: 'Pa$$w0rd'
+    db_host: 'localhost'
+    db_login_user: 'root'
+    db_login_password: '$ecretP4ssword!'
 
-    pre_tasks:
-      - name: 'Create mysql user'
-        mysql_user:
-          name: '{{ exporter_user_name }}'
-          password: '{{ exporter_user_password }}'
-          host: '{{ db_host }}'
-          priv: '*.*:SELECT,PROCESS,REPLICATION CLIENT'
-          login_user: '{{ db_login_user }}'
-          login_password: '{{ db_login_password }}'
-          state: present
+  pre_tasks:
+    - name: 'Create mysql user'
+      mysql_user:
+        name: '{{ exporter_user_name }}'
+        password: '{{ exporter_user_password }}'
+        host: '{{ db_host }}'
+        priv: '*.*:SELECT,PROCESS,REPLICATION CLIENT'
+        login_user: '{{ db_login_user }}'
+        login_password: '{{ db_login_password }}'
+        state: present
 
-    roles:
-      - role: antmelekhin.mysqld_exporter
-        mysqld_exporter_mysql_user: '{{ exporter_user_name }}'
-        mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
-  ```
+  roles:
+    - role: antmelekhin.mysqld_exporter
+      mysqld_exporter_mysql_user: '{{ exporter_user_name }}'
+      mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
+```
 
-- Install and configure `MySQL Exporter` with TLS certificate and basic authentication feature.
+Install and configure `MySQL Exporter` with TLS certificate and basic authentication feature.
 
-  ```yaml
-  ---
-  - name: 'Setup MySQL Exporter'
-    hosts: all
-    roles:
-      - role: antmelekhin.mysqld_exporter
-        mysqld_exporter_mysql_user: 'exporter'
-        mysqld_exporter_mysql_password: 'Pa$$w0rd'
-        mysqld_exporter_tls_server_config:
-          cert_file: '/etc/ssl/certs/mysqld_exporter.cert'
-          key_file: '/etc/ssl/private/mysqld_exporter.key'
-        mysqld_exporter_basic_auth_users:
-          newuser1: newpassword1
-          newuser2: newpassword2
-  ```
+```yaml
+---
+- name: 'Setup MySQL Exporter'
+  hosts: all
+  roles:
+    - role: antmelekhin.mysqld_exporter
+      mysqld_exporter_mysql_user: 'exporter'
+      mysqld_exporter_mysql_password: 'Pa$$w0rd'
+      mysqld_exporter_tls_server_config:
+        cert_file: '/etc/ssl/certs/mysqld_exporter.cert'
+        key_file: '/etc/ssl/private/mysqld_exporter.key'
+      mysqld_exporter_basic_auth_users:
+        newuser1: newpassword1
+        newuser2: newpassword2
+```
 
 License
 -------

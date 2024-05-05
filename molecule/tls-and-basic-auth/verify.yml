@@ -16,11 +16,11 @@
     - name: 'Verify mysqld_exporter is responding to requests'
       ansible.builtin.uri:
         url: 'https://{{ ansible_host }}:9104/metrics'
-        user: newuser1
-        password: newpassword1
+        user: 'newuser1'
+        password: 'newpassword1'
         force_basic_auth: true
         validate_certs: false
-      register: _result
-      until: _result.status == 200
+      register: __result
+      until: __result.status == 200
       retries: 120
       delay: 5

@@ -6,7 +6,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: '${IMAGE:-docker-systemd}-${TAG:-ubuntu-22.04}${TOX_ENVNAME}'
+  - name: 'mysqld-exporter-${IMAGE:-docker-systemd}-${TAG:-ubuntu-22.04}${TOX_ENVNAME}'
     image: '${NAMESPACE:-antmelekhin}/${IMAGE:-docker-systemd}:${TAG:-ubuntu-22.04}'
     published_ports:
       - 0.0.0.0:9104:9104/udp
