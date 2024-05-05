@@ -36,8 +36,9 @@
     - name: 'Ensure MySQL Exporter is running and enabled at boot'
       ansible.builtin.systemd:
         name: 'mysqld_exporter'
-        enabled: true
         state: 'started'
+        enabled: true
+      when: not ansible_check_mode
 
 - name: 'Linux | Configure SELinux when is already installed'
   when: ansible_selinux.status == 'enabled'

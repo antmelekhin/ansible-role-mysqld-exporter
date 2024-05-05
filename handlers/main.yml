@@ -4,4 +4,5 @@
     name: 'mysqld_exporter'
     daemon_reload: true
     state: 'restarted'
+  when: not ansible_check_mode
   become: true
