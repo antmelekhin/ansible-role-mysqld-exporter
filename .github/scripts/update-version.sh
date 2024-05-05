@@ -20,6 +20,11 @@ SOFTWARE="$1"
 URL="https://api.github.com/repos/prometheus/${SOFTWARE}/releases/latest"
 LATEST_VERSION="$(curl --silent $URL | jq '.tag_name' | tr -d '"v')"
 
+# Validate latest version
+if ! [[ $LATEST_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
+   echo "error: ${LATEST_VERSION} is not a valid Semantic Version" >&2; exit 0
+fi
+
 # Compare current and latest versions
 if [[ $CURRENT_VERSION == $LATEST_VERSION ]]; then
     echo -e "${GREEN}Newest version is used.${NO_COLOR}"
@@ -46,7 +51,7 @@ if [ "${REMOTE_BRANCH}" == null ] ; then
     # Push new version
     git add defaults/main.yml README.md
     git commit --signoff -m "${UPDATE_VERSION_COMMIT}"
-    
+
     echo -e "${GREEN}Pushing to ${UPDATE_VERSION_BRANCH} branch.${NO_COLOR}"
     if ! git push "https://${GITHUB_TOKEN}:@github.com/${REPO_NAME}" --set-upstream "${UPDATE_VERSION_BRANCH}"; then
         echo -e "${RED}Branch push failed.${NO_COLOR}"

@@ -7,26 +7,47 @@ on:
       - main
 
 jobs:
-  test:
-    name: 'Test'
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout the codebase'
+        uses: actions/checkout@v4
+
+      - name: 'Set up Python 3'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 'Install linters'
+        run: pip3 install ansible-lint yamllint
+
+      - name: 'Run linters'
+        run: |
+          yamllint .
+          ansible-lint
+
+  molecule:
+    name: 'Molecule'
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
           - distro: 'debian-12'
             scenario: 'default'
-          - distro: 'rockylinux-8'
+          - distro: 'rockylinux-9'
             scenario: 'default'
-          - distro: 'ubuntu-20.04'
+          - distro: 'ubuntu-22.04'
             scenario: 'default'
           - distro: 'ubuntu-22.04'
             scenario: 'tls-and-basic-auth'
 
     steps:
       - name: 'Checkout the codebase'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: 'Test role'
+      - name: 'Testing an Ansible role with Molecule'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
