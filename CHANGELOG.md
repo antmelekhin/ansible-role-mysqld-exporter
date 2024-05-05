@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.2.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.2...v1.2.3) (2024-05-05)
+
+
+### Code Refactoring
+
+* minor changes ([#11](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/11)) ([2d1e19f](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/2d1e19f18db5c2dc2726b7f0f1d02a174e16ff13))
+
+
+### Continuous Integration
+
+* update workflows and release rules ([#10](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/10)) ([ec576b6](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/ec576b64d3652d877c97a27c75285e7f4bc9812e))
+
+
+### Styles
+
+* add newline to end of file ([1ec64e4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/1ec64e4071b9bbc8b1ceae68598c1c7ea5f9c690))
+
+
+### Tests
+
+* add .tox as ignore ([990f527](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/990f527908af3ef2f45498179996632ff8ac0348))
+* rm lint from molecule ([e1d1060](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/e1d1060c5bd120dbbfd42c540e5fc58c22872e14))
+
 ## [1.2.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.1...v1.2.2) (2023-12-20)
 
 
