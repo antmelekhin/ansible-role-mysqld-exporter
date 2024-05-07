@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.3...v1.2.4) (2024-05-07)
+
+
+### Fixes
+
+* fix selinux type for the specified port ([718b338](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/718b338793b331f0e8fb85128a1dcf61bd7763b9))
+
 ## [1.2.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.2...v1.2.3) (2024-05-05)
 
 
