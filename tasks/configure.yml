@@ -55,5 +55,5 @@
       community.general.seport:
         ports: '{{ mysqld_exporter_web_listen_port }}'
         proto: 'tcp'
-        setype: 'ssh_port_t'
+        setype: 'http_port_t'
         state: 'present'
