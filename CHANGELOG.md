@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.5](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.4...v1.2.5) (2024-05-18)
+
+
+### Documentation
+
+* **README:** update variables documentation ([69565ef](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/69565ef0493b0819c3c757e9f01c37f150dd947c))
+
+
+### Styles
+
+* task and molecule instance names ([48fda35](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/48fda357691f6660a3abd889cd4742147607f46f))
+
 ## [1.2.4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.3...v1.2.4) (2024-05-07)
 
 
