@@ -1,7 +1,7 @@
 MySQL Exporter
 ==============
 
-An Ansible role to install, configure and update [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
+An Ansible role to install, configure and update the [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
 
 Requirements
 ------------
@@ -29,14 +29,19 @@ Requirements
 Role Variables
 --------------
 
-- `mysqld_exporter_version` The specific version of MySQL Exporter to download (default: `0.15.1`).
+Variables used to install the MySQL Exporter:
+
+- `mysqld_exporter_version`  The version of MySQL Exporter to download (default: `0.15.1`).
 - `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.15.1.linux-amd64`).
 - `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
-- `mysqld_exporter_download_url` URL to download an archive with MySQL Exporter (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
+- `mysqld_exporter_download_url`  URL to download the MySQL Exporter archive (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
+
+Variables used to configure the MySQL Exporter:
+
 - `mysqld_exporter_user` and `mysqld_exporter_group` Unix user and group that will be created (default: `mysqld_exporter`).
-- `mysqld_exporter_install_path` Path to MySQL Exporter installation directory (default: `/usr/local/bin`).
-- `mysqld_exporter_config_path` Path to MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
-- `mysqld_exporter_mysql_user` and `mysqld_exporter_mysql_password` `(Required)` Username and password to be used for connecting to MySQL Server (default: `''`).
+- `mysqld_exporter_install_path` The MySQL Exporter installation directory (default: `/usr/local/bin`).
+- `mysqld_exporter_config_path` The MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
+- `mysqld_exporter_mysql_user` and `mysqld_exporter_mysql_password` `(Required)` Username and password to connect to the MySQL server (default: `''`).
 - `mysqld_exporter_mysql_host` MySQL host (default: `localhost`).
 - `mysqld_exporter_mysql_port` MySQL port (default: `3306`).
 - `mysqld_exporter_web_listen_address` Address to listen on for web interface and telemetry (default: `0.0.0.0`).
@@ -68,7 +73,7 @@ None.
 Example Playbook
 ----------------
 
-Install and configure `MySQL Exporter`. Also, you need to create a user to connect the exporter to a database instance:
+Install and configure MySQL Exporter. Also, you need to create a user to connect the exporter to a database instance:
 
 ```yaml
 ---
@@ -98,7 +103,7 @@ Install and configure `MySQL Exporter`. Also, you need to create a user to conne
       mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
 ```
 
-Install and configure `MySQL Exporter` with TLS certificate and basic authentication feature.
+Install and configure MySQL Exporter with TLS certificate and basic authentication feature.
 
 ```yaml
 ---
