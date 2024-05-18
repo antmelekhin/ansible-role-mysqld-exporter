@@ -2,7 +2,7 @@
 - name: 'Configure and start MySQL Exporter'
   become: true
   block:
-    - name: 'Configure SystemD unit for MySQL Exporter'
+    - name: 'Create a MySQL Exporter systemd service'
       ansible.builtin.template:
         src: 'mysqld_exporter.service.j2'
         dest: '/etc/systemd/system/mysqld_exporter.service'
@@ -11,7 +11,7 @@
         mode: 0644
       notify: 'Restart MySQL Exporter'
 
-    - name: 'Configure .cnf file for MySQL Exporter'
+    - name: 'Configure .cnf file for the MySQL Exporter'
       ansible.builtin.template:
         src: 'mysqld_exporter.cnf.j2'
         dest: '{{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf'
@@ -20,7 +20,7 @@
         mode: 0600
       notify: 'Restart MySQL Exporter'
 
-    - name: 'Configure web config file for MySQL Exporter'
+    - name: 'Configure the web configuration file for the MySQL Exporter'
       ansible.builtin.template:
         src: 'web_config.yaml.j2'
         dest: '{{ mysqld_exporter_config_path }}/web_config.yaml'
@@ -33,7 +33,7 @@
           mysqld_exporter_http_server_config | length or
           mysqld_exporter_basic_auth_users | length
 
-    - name: 'Ensure MySQL Exporter is running and enabled at boot'
+    - name: 'Ensure the MySQL Exporter is running and enabled at boot'
       ansible.builtin.systemd:
         name: 'mysqld_exporter'
         state: 'started'

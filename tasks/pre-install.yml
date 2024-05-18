@@ -2,12 +2,12 @@
 - name: 'Prepare to install MySQL Exporter'
   become: true
   block:
-    - name: 'Create MySQL Exporter group'
+    - name: 'Create a MySQL Exporter group'
       ansible.builtin.group:
         name: '{{ mysqld_exporter_group }}'
         system: true
 
-    - name: 'Create MySQL Exporter user'
+    - name: 'Create a MySQL Exporter user'
       ansible.builtin.user:
         name: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
