@@ -5,15 +5,15 @@ mysqld_exporter_archive_name: 'mysqld_exporter-{{ mysqld_exporter_version }}.lin
 mysqld_exporter_archive_extension: 'tar.gz'
 mysqld_exporter_download_url: 'https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}'
 
-# MySQL Exporter unix user and group
+# The MySQLd Exporter user and group
 mysqld_exporter_user: 'mysqld_exporter'
 mysqld_exporter_group: '{{ mysqld_exporter_user }}'
 
-# MySQL Exporter directories
+# The MySQLd Exporter directories
 mysqld_exporter_install_path: '/usr/local/bin'
 mysqld_exporter_config_path: '/usr/local/etc'
 
-# MySQL Exporter connection settings
+# The MySQLd Exporter connection settings
 mysqld_exporter_mysql_user: ''
 mysqld_exporter_mysql_password: ''
 mysqld_exporter_mysql_host: 'localhost'
@@ -26,7 +26,7 @@ mysqld_exporter_web_telemetry_path: '/metrics'
 mysqld_exporter_log_level: 'info'
 mysqld_exporter_log_format: 'logfmt'
 
-# MySQL Exporter TLS and basic authentication settings: https://github.com/prometheus/mysqld_exporter#tls-and-basic-authentication
+# The MySQLd Exporter TLS and basic authentication settings: https://github.com/prometheus/mysqld_exporter#tls-and-basic-authentication
 mysqld_exporter_tls_server_config: {}
 mysqld_exporter_http_server_config: {}
 mysqld_exporter_basic_auth_users: {}

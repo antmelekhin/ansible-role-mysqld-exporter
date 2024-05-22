@@ -1,39 +1,39 @@
 ---
-- name: 'Configure and start the MySQL Exporter'
+- name: 'Configure and start the MySQLd Exporter'
   become: true
   block:
-    - name: 'Copy the MySQL Exporter systemd service'
+    - name: 'Copy the MySQLd Exporter systemd service'
       ansible.builtin.template:
         src: 'mysqld_exporter.service.j2'
         dest: '/etc/systemd/system/mysqld_exporter.service'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0644
-      notify: 'Restart the MySQL Exporter'
+      notify: 'Restart the MySQLd Exporter'
 
-    - name: 'Copy the MySQL Exporter configuration file'
+    - name: 'Copy the MySQLd Exporter configuration file'
       ansible.builtin.template:
         src: 'mysqld_exporter.cnf.j2'
         dest: '{{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: 'Restart the MySQL Exporter'
+      notify: 'Restart the MySQLd Exporter'
 
-    - name: 'Copy the MySQL Exporter web configuration file'
+    - name: 'Copy the MySQLd Exporter web configuration file'
       ansible.builtin.template:
         src: 'web_config.yaml.j2'
         dest: '{{ mysqld_exporter_config_path }}/web_config.yaml'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: 'Restart the MySQL Exporter'
+      notify: 'Restart the MySQLd Exporter'
       when:
         - mysqld_exporter_tls_server_config | length or
           mysqld_exporter_http_server_config | length or
           mysqld_exporter_basic_auth_users | length
 
-    - name: 'Ensure the MySQL Exporter is running and enabled at boot'
+    - name: 'Ensure the MySQLd Exporter is running and enabled at boot'
       ansible.builtin.systemd:
         name: 'mysqld_exporter'
         state: 'started'
@@ -51,7 +51,7 @@
           else ['policycoreutils-python-utils'] }}"
         state: 'present'
 
-    - name: 'Allow the MySQL Exporter port in SELinux'
+    - name: 'Allow the MySQLd Exporter port in SELinux'
       community.general.seport:
         ports: '{{ mysqld_exporter_web_listen_port }}'
         proto: 'tcp'
