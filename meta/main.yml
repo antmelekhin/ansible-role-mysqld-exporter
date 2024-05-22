@@ -1,38 +1,39 @@
 ---
 galaxy_info:
-  author: antmelekhin
-  role_name: mysqld_exporter
-  description: An Ansible role to install, configure and update MySQL Exporter.
+  author: 'antmelekhin'
+  role_name: 'mysqld_exporter'
+  description: 'An Ansible role to install, configure and update the MySQLd Exporter.'
 
-  license: MIT
+  license: 'MIT'
 
   min_ansible_version: '2.12'
 
   platforms:
-    - name: Amazon Linux
+    - name: 'Amazon Linux'
       versions:
         - '2023'
-    - name: Debian
+    - name: 'Debian'
       versions:
         - 'buster'
         - 'bullseye'
         - 'bookworm'
-    - name: EL
+    - name: 'EL'
       versions:
         - '7'
         - '8'
         - '9'
-    - name: Ubuntu
+    - name: 'Ubuntu'
       versions:
         - 'bionic'
         - 'focal'
         - 'jammy'
 
   galaxy_tags:
-    - monitoring
-    - prometheus
-    - mysql
-    - mariadb
-    - exporter
+    - 'exporter'
+    - 'mariadb'
+    - 'monitoring'
+    - 'metrics'
+    - 'mysqld'
+    - 'prometheus'
 
 dependencies: []
