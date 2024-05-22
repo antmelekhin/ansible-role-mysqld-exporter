@@ -11,7 +11,7 @@
   changed_when: false
   register: __mysqld_exporter_version_check
 
-- name: 'Download and unarchive MySQL Exporter'
+- name: 'Download and unarchive the MySQL Exporter'
   when:
     - not __mysqld_exporter_is_installed.stat.exists or
       ( __mysqld_exporter_version_check.stderr_lines | length and
@@ -42,6 +42,6 @@
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0755
-      notify: 'Restart MySQL Exporter'
+      notify: 'Restart the MySQL Exporter'
       when: not ansible_check_mode
       become: true

@@ -1,5 +1,5 @@
 ---
-- name: 'Prepare to install MySQL Exporter'
+- name: 'Prepare to install the MySQL Exporter'
   become: true
   block:
     - name: 'Create a MySQL Exporter group'

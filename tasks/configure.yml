@@ -1,33 +1,33 @@
 ---
-- name: 'Configure and start MySQL Exporter'
+- name: 'Configure and start the MySQL Exporter'
   become: true
   block:
-    - name: 'Create a MySQL Exporter systemd service'
+    - name: 'Copy the MySQL Exporter systemd service'
       ansible.builtin.template:
         src: 'mysqld_exporter.service.j2'
         dest: '/etc/systemd/system/mysqld_exporter.service'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0644
-      notify: 'Restart MySQL Exporter'
+      notify: 'Restart the MySQL Exporter'
 
-    - name: 'Configure .cnf file for the MySQL Exporter'
+    - name: 'Copy the MySQL Exporter configuration file'
       ansible.builtin.template:
         src: 'mysqld_exporter.cnf.j2'
         dest: '{{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: 'Restart MySQL Exporter'
+      notify: 'Restart the MySQL Exporter'
 
-    - name: 'Configure the web configuration file for the MySQL Exporter'
+    - name: 'Copy the MySQL Exporter web configuration file'
       ansible.builtin.template:
         src: 'web_config.yaml.j2'
         dest: '{{ mysqld_exporter_config_path }}/web_config.yaml'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
         mode: 0600
-      notify: 'Restart MySQL Exporter'
+      notify: 'Restart the MySQL Exporter'
       when:
         - mysqld_exporter_tls_server_config | length or
           mysqld_exporter_http_server_config | length or
@@ -40,18 +40,18 @@
         enabled: true
       when: not ansible_check_mode
 
-- name: 'Linux | Configure SELinux when is already installed'
+- name: 'Configure SELinux when is already installed'
   when: ansible_selinux.status == 'enabled'
   become: true
   block:
-    - name: 'Linux | Install SELinux required packages'
+    - name: 'Install the required SELinux packages'
       ansible.builtin.package:
         name: "{{ ['policycoreutils-python']
           if ansible_python_version is version('3', '<')
           else ['policycoreutils-python-utils'] }}"
         state: 'present'
 
-    - name: 'Linux | Allow MySQL Exporter port in SELinux'
+    - name: 'Allow the MySQL Exporter port in SELinux'
       community.general.seport:
         ports: '{{ mysqld_exporter_web_listen_port }}'
         proto: 'tcp'
