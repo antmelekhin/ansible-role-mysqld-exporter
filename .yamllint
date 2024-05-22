@@ -2,9 +2,6 @@
 # Based on ansible-lint config
 extends: default
 
-ignore: |
-  .tox/
-
 rules:
   braces:
     max-spaces-inside: 1
@@ -34,3 +31,6 @@ rules:
     type: unix
   trailing-spaces: disable
   truthy: disable
+
+ignore: |
+  .tox/
