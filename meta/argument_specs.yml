@@ -1,73 +1,75 @@
 ---
 argument_specs:
   main:
-    short_description: 'Prometheus MySQL Exporter'
+    short_description: 'Prometheus MySQLd Exporter'
     description:
-      - 'An Ansible role to install, configure and update the L(MySQL Exporter,https://github.com/prometheus/mysqld_exporter)'
+      - 'An Ansible role to install, configure and update the L(MySQLd Exporter,https://github.com/prometheus/mysqld_exporter).'
     author:
       - 'Anton Melekhin'
     options:
       mysqld_exporter_version:
         type: 'str'
-        description: 'The version of MySQL Exporter to download'
+        description: 'The version of MySQLd Exporter to install.'
         default: '0.15.1'
       mysqld_exporter_archive_name:
         type: 'str'
-        description: 'The MySQL Exporter archive name'
+        description: 'The MySQLd Exporter archive name.'
         default: 'mysqld_exporter-{{ mysqld_exporter_version }}.linux-{{ _mysqld_exporter_architecture }}'
       mysqld_exporter_archive_extension:
         type: 'str'
-        description: 'The MySQL Exporter archive extension'
+        description: 'The MySQLd Exporter archive extension.'
         default: 'tar.gz'
       mysqld_exporter_download_url:
         type: 'str'
-        description: 'The MySQL Exporter archive download URL'
+        description: 'The MySQLd Exporter archive download URL.'
         default: 'https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}'
       mysqld_exporter_user:
         type: 'str'
-        description: 'Unix user that will be created'
+        description: 'System user that will be created.'
         default: 'mysqld_exporter'
       mysqld_exporter_group:
         type: 'str'
-        description: 'Unix group that will be created'
+        description: 'System group that will be created.'
         default: '{{ mysqld_exporter_user }}'
       mysqld_exporter_install_path:
         type: 'str'
-        description: 'The MySQL Exporter installation directory'
+        description: 'The MySQLd Exporter installation directory.'
         default: '/usr/local/bin'
       mysqld_exporter_config_path:
         type: 'str'
-        description: 'The MySQL Exporter directory, that contains the MySQL connection configuration'
+        description: 'The MySQLd Exporter directory, that contains the MySQL Server connection configuration.'
         default: '/usr/local/etc'
       mysqld_exporter_mysql_user:
         type: 'str'
-        description: 'The target MySQL server username'
+        description:
+          - 'The target MySQL Server username.'
+          - 'Please refer to the L(official documentation,https://github.com/prometheus/mysqld_exporter#required-grants) for a description of the required grants for a MySQL user.'
       mysqld_exporter_mysql_password:
         type: 'str'
-        description: 'The target MySQL server password'
+        description: 'The target MySQL Server password.'
       mysqld_exporter_mysql_host:
         type: 'str'
-        description: 'The target MySQL server host'
+        description: 'The target MySQL Server host.'
         default: 'localhost'
       mysqld_exporter_mysql_port:
         type: 'int'
-        description: 'The target MySQL server port'
+        description: 'The target MySQL Server port.'
         default: 3306
       mysqld_exporter_web_listen_address:
         type: 'str'
-        description: 'Address to listen on for web interface and telemetry'
+        description: 'The address to listen for the web interface and telemetry.'
         default: '0.0.0.0'
       mysqld_exporter_web_listen_port:
         type: 'int'
-        description: 'The port to bind to'
+        description: 'The port number that MySQLd Exporter listens on.'
         default: 9104
       mysqld_exporter_web_telemetry_path:
         type: 'str'
-        description: 'The path at which to serve metrics'
+        description: 'The path to expose metrics.'
         default: '/metrics'
       mysqld_exporter_log_level:
         type: 'str'
-        description: 'MySQL Exporter logging level'
+        description: 'The MySQLd Exporter logging level.'
         choices:
           - 'debug'
           - 'info'
@@ -76,24 +78,22 @@ argument_specs:
         default: 'info'
       mysqld_exporter_log_format:
         type: 'str'
-        description: 'Output format of log messages'
+        description: 'The output format of log messages.'
         choices:
           - 'logfmt'
           - 'json'
         default: 'logfmt'
       mysqld_exporter_tls_server_config:
         type: 'dict'
-        description: 'Certificate and key files for server to use to authenticate to client'
+        description: 'Certificate and key files for server to use to authenticate to client.'
       mysqld_exporter_http_server_config:
         type: 'dict'
-        description:
-          - 'Enable HTTP/2 support'
-          - 'Note that HTTP/2 is only supported with TLS.'
+        description: 'Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.'
       mysqld_exporter_basic_auth_users:
         type: 'dict'
-        description:
-          - 'Users and password for basic authentication'
-          - 'Passwords are automatically hashed with bcrypt'
+        description: 'Users and password for basic authentication. Passwords are automatically hashed with bcrypt.'
       mysqld_exporter_collectors:
         type: 'list'
-        description: 'A collectors list'
+        description:
+          - 'A list of collectors to use.'
+          - 'See the L(official documentation,https://github.com/prometheus/mysqld_exporter#collector-flags) for a list of available collector flags'

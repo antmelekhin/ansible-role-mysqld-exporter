@@ -1,7 +1,7 @@
-MySQL Exporter
-==============
+MySQLd Exporter
+===============
 
-An Ansible role to install, configure and update the [MySQL Exporter](https://github.com/prometheus/mysqld_exporter).
+An Ansible role to install, configure and update the [MySQLd Exporter](https://github.com/prometheus/mysqld_exporter).
 
 Requirements
 ------------
@@ -29,41 +29,8 @@ Requirements
 Role Variables
 --------------
 
-Variables used to install the MySQL Exporter:
-
-- `mysqld_exporter_version`  The version of MySQL Exporter to download (default: `0.15.1`).
-- `mysqld_exporter_archive_name` MySQL Exporter archive name (default: `mysqld_exporter-0.15.1.linux-amd64`).
-- `mysqld_exporter_archive_extension` MySQL Exporter archive extension (default: `tar.gz`).
-- `mysqld_exporter_download_url`  URL to download the MySQL Exporter archive (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
-
-Variables used to configure the MySQL Exporter:
-
-- `mysqld_exporter_user` and `mysqld_exporter_group` Unix user and group that will be created (default: `mysqld_exporter`).
-- `mysqld_exporter_install_path` The MySQL Exporter installation directory (default: `/usr/local/bin`).
-- `mysqld_exporter_config_path` The MySQL Exporter directory with mysql connection config (default: `/usr/local/etc`).
-- `mysqld_exporter_mysql_user` and `mysqld_exporter_mysql_password` `(Required)` Username and password to connect to the MySQL server (default: `''`).
-- `mysqld_exporter_mysql_host` MySQL host (default: `localhost`).
-- `mysqld_exporter_mysql_port` MySQL port (default: `3306`).
-- `mysqld_exporter_web_listen_address` Address to listen on for web interface and telemetry (default: `0.0.0.0`).
-- `mysqld_exporter_web_listen_port` The port to bind to (default: `9104`).
-- `mysqld_exporter_web_telemetry_path` The path at which to serve metrics (default: `/metrics`).
-- `mysqld_exporter_tls_server_config` Certificate and key files for server to use to authenticate to client.
-- `mysqld_exporter_http_server_config` Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.
-- `mysqld_exporter_basic_auth_users` Users and password for basic authentication. Passwords are automatically hashed with bcrypt.
-- `mysqld_exporter_collectors` Collectors list (default: `[]`).
-- `mysqld_exporter_log_level` MySQL Exporter logging level.
-
-  Available values:
-  - `debug`
-  - `info` (default)
-  - `warn`
-  - `error`
-
-- `mysqld_exporter_log_format` Output format of log messages.
-
-  Available values:
-  - `logfmt` (default)
-  - `json`
+All variables that can be overridden are stored in the [defaults/main.yml](defaults/main.yml) file.
+Please refer to the [meta/argument_specs.yml](meta/argument_specs.yml) file for a description of the available variables.
 
 Dependencies
 ------------
@@ -73,11 +40,11 @@ None.
 Example Playbook
 ----------------
 
-Install and configure MySQL Exporter. Also, you need to create a user to connect the exporter to a database instance:
+Install and configure the `MySQLd Exporter`. Also, you need to create a user to connect the `MySQLd Exporter` to a database instance:
 
 ```yaml
 ---
-- name: 'Setup MySQL Exporter'
+- name: 'Setup the MySQLd Exporter'
   hosts: all
   vars:
     exporter_user_name: 'exporter'
@@ -87,7 +54,7 @@ Install and configure MySQL Exporter. Also, you need to create a user to connect
     db_login_password: '$ecretP4ssword!'
 
   pre_tasks:
-    - name: 'Create mysql user'
+    - name: 'Create a mysql user'
       mysql_user:
         name: '{{ exporter_user_name }}'
         password: '{{ exporter_user_password }}'
@@ -103,11 +70,11 @@ Install and configure MySQL Exporter. Also, you need to create a user to connect
       mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
 ```
 
-Install and configure MySQL Exporter with TLS certificate and basic authentication feature.
+Install and configure the `MySQLd Exporter` with TLS certificate and basic authentication feature.
 
 ```yaml
 ---
-- name: 'Setup MySQL Exporter'
+- name: 'Setup the MySQLd Exporter'
   hosts: all
   roles:
     - role: antmelekhin.mysqld_exporter
