@@ -1,0 +1,9 @@
+---
+- name: 'Prepare an Ansible host for GitHub Actions'
+  hosts: localhost
+  tasks:
+    - name: 'Install tar for tasks delegated to the localhost'
+      community.general.apk:
+        name: 'tar'
+        update_cache: true
+      when: ansible_os_family == 'Alpine'

@@ -1,16 +1,7 @@
 ---
-- name: 'Prepare an Ansible host for Github Actions'
-  hosts: localhost
-  tasks:
-    - name: 'Install tar for delegated to localhost tasks'
-      community.general.apk:
-        name: 'tar'
-        update_cache: true
-      when: ansible_os_family == 'Alpine'
-
 - name: 'Converge'
   hosts: all
   roles:
     - role: antmelekhin.mysqld_exporter
-      mysqld_exporter_mysql_user: 'exporter'
-      mysqld_exporter_mysql_password: 'Pa$$word'
+      mysqld_exporter_mysqld_user: 'exporter'
+      mysqld_exporter_mysqld_password: 'Pa$$word'
