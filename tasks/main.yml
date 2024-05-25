@@ -5,8 +5,8 @@
     fail_msg: '{{ required_vars }} needs to be set for the role to work'
     success_msg: 'Required variables {{ required_vars }} is defined'
   loop:
-    - mysqld_exporter_mysql_user
-    - mysqld_exporter_mysql_password
+    - mysqld_exporter_mysqld_user
+    - mysqld_exporter_mysqld_password
   loop_control:
     loop_var: required_vars
 

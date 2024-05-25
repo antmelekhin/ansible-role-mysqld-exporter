@@ -14,10 +14,11 @@ mysqld_exporter_install_path: '/usr/local/bin'
 mysqld_exporter_config_path: '/usr/local/etc'
 
 # The MySQLd Exporter connection settings
-mysqld_exporter_mysql_user: ''
-mysqld_exporter_mysql_password: ''
-mysqld_exporter_mysql_host: 'localhost'
-mysqld_exporter_mysql_port: 3306
+mysqld_exporter_mysqld_user: ''
+mysqld_exporter_mysqld_password: ''
+mysqld_exporter_mysqld_host: ''
+mysqld_exporter_mysqld_port: 3306
+mysqld_exporter_mysqld_socket: '/run/mysqld/mysqld.sock'
 
 # See available setting flags: https://github.com/prometheus/mysqld_exporter#general-flags
 mysqld_exporter_web_listen_address: '0.0.0.0'
