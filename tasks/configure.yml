@@ -6,8 +6,8 @@
       ansible.builtin.template:
         src: 'mysqld_exporter.service.j2'
         dest: '/etc/systemd/system/mysqld_exporter.service'
-        owner: '{{ mysqld_exporter_user }}'
-        group: '{{ mysqld_exporter_group }}'
+        owner: 'root'
+        group: 'root'
         mode: 0644
       notify: 'Restart the MySQLd Exporter'
 
@@ -17,7 +17,7 @@
         dest: '{{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
-        mode: 0600
+        mode: 0640
       notify: 'Restart the MySQLd Exporter'
 
     - name: 'Copy the MySQLd Exporter web configuration file'
@@ -26,7 +26,7 @@
         dest: '{{ mysqld_exporter_config_path }}/web_config.yaml'
         owner: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
-        mode: 0600
+        mode: 0640
       notify: 'Restart the MySQLd Exporter'
       when:
         - mysqld_exporter_tls_server_config | length or

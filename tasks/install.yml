@@ -19,7 +19,7 @@
       ( __mysqld_exporter_version_check.stdout_lines | length and
       mysqld_exporter_version not in __mysqld_exporter_version_check.stdout_lines[0].split()[2] )
   block:
-    - name: 'Download the MySQLd Exporter binary to a local folder'
+    - name: 'Download the MySQLd Exporter archive to a local folder'
       ansible.builtin.get_url:
         url: '{{ mysqld_exporter_download_url }}/{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
         dest: '/tmp/{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
@@ -39,8 +39,8 @@
       ansible.builtin.copy:
         src: '/tmp/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
         dest: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
-        owner: '{{ mysqld_exporter_user }}'
-        group: '{{ mysqld_exporter_group }}'
+        owner: 'root'
+        group: 'root'
         mode: 0755
       notify: 'Restart the MySQLd Exporter'
       when: not ansible_check_mode
