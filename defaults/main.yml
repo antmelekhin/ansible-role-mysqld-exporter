@@ -3,6 +3,7 @@
 mysqld_exporter_version: '0.15.1'
 mysqld_exporter_archive_name: 'mysqld_exporter-{{ mysqld_exporter_version }}.linux-{{ _mysqld_exporter_architecture }}'
 mysqld_exporter_archive_extension: 'tar.gz'
+mysqld_exporter_archive_local_path: '/tmp'
 mysqld_exporter_download_url: 'https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}'
 
 # The MySQLd Exporter user and group
