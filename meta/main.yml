@@ -31,8 +31,8 @@ galaxy_info:
   galaxy_tags:
     - 'exporter'
     - 'mariadb'
-    - 'monitoring'
     - 'metrics'
+    - 'monitoring'
     - 'mysqld'
     - 'prometheus'
 
