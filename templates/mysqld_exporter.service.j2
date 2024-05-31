@@ -15,7 +15,7 @@ ExecStart={{ mysqld_exporter_install_path }}/mysqld_exporter \
 {% endif %}
     --web.listen-address {{ mysqld_exporter_web_listen_address }}:{{ mysqld_exporter_web_listen_port }} \
     --web.telemetry-path {{ mysqld_exporter_web_telemetry_path }} \
-    --config.my-cnf {{ mysqld_exporter_config_path }}/.mysqld_exporter.cnf \
+    --config.my-cnf {{ mysqld_exporter_config_path }}/mysqld_exporter.cnf \
 {% for collector in mysqld_exporter_collectors -%}
     --{{ collector }} \
 {% endfor %}
