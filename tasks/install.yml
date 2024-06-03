@@ -21,23 +21,23 @@
   block:
     - name: 'Download the MySQLd Exporter archive to a local folder'
       ansible.builtin.get_url:
-        url: '{{ mysqld_exporter_download_url }}/{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
-        dest: '{{ mysqld_exporter_archive_local_path }}/{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
+        url: '{{ mysqld_exporter_download_url }}/{{ mysqld_exporter_archive_name }}.tar.gz'
+        dest: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}.tar.gz'
         mode: 0644
       delegate_to: localhost
       check_mode: false
 
     - name: 'Unarchive the MySQLd Exporter binary'
       ansible.builtin.unarchive:
-        src: '{{ mysqld_exporter_archive_local_path }}/{{ mysqld_exporter_archive_name }}.{{ mysqld_exporter_archive_extension }}'
-        dest: '{{ mysqld_exporter_archive_local_path }}'
-        creates: '{{ mysqld_exporter_archive_local_path }}/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
+        src: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}.tar.gz'
+        dest: '{{ mysqld_exporter_download_path }}'
+        creates: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
       delegate_to: localhost
       check_mode: false
 
     - name: 'Copy the MySQLd Exporter binary into a place'
       ansible.builtin.copy:
-        src: '{{ mysqld_exporter_archive_local_path }}/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
+        src: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
         dest: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
         owner: 'root'
         group: 'root'
