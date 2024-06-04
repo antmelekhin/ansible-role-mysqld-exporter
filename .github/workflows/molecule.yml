@@ -35,6 +35,8 @@ jobs:
         include:
           - distro: 'amazonlinux-2023'
             scenario: 'default'
+          - distro: 'debian-11'
+            scenario: 'default'
           - distro: 'debian-12'
             scenario: 'default'
           - distro: 'rockylinux-8'
