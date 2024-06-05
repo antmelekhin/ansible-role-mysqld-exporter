@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.5...v1.3.0) (2024-06-05)
+
+
+### Improvements
+
+* update variables and common role style, add molecule `integration-test` ([#12](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/12)) ([52646e1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/52646e12fdc7dcc3be8f6292ea44979a00d3da49))
+
 ## [1.2.5](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.4...v1.2.5) (2024-05-18)
 
 
