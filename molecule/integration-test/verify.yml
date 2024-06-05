@@ -1,0 +1,14 @@
+---
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: 'Verify the MySQLd Exporter is responding to requests'
+      ansible.builtin.uri:
+        url: 'http://{{ ansible_host }}:9104/metrics'
+        return_content: true
+      register: __mysqld_exporter_response
+      until: __mysqld_exporter_response.status == 200
+      retries: 120
+      delay: 5

@@ -1,17 +1,25 @@
 ---
-- name: 'Prepare to install MySQL Exporter'
+- name: 'Prepare for installing the MySQLd Exporter'
   become: true
   block:
-    - name: 'Create a MySQL Exporter group'
+    - name: 'Create a MySQLd Exporter group'
       ansible.builtin.group:
         name: '{{ mysqld_exporter_group }}'
         system: true
 
-    - name: 'Create a MySQL Exporter user'
+    - name: 'Create a MySQLd Exporter user'
       ansible.builtin.user:
         name: '{{ mysqld_exporter_user }}'
         group: '{{ mysqld_exporter_group }}'
-        comment: 'MySQL Exporter'
+        comment: 'MySQLd Exporter'
         system: true
         createhome: false
         shell: '/bin/false'
+
+    - name: 'Create a MySQLd Exporter configuration directory'
+      ansible.builtin.file:
+        path: '{{ mysqld_exporter_config_path }}'
+        owner: '{{ mysqld_exporter_user }}'
+        group: '{{ mysqld_exporter_group }}'
+        state: 'directory'
+        mode: 0755

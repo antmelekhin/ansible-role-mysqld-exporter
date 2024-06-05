@@ -1,0 +1,20 @@
+---
+- name: 'Converge'
+  hosts: all
+  vars:
+    mysqld_exporter_mysqld_user: 'exporter'
+    mysqld_exporter_mysqld_password: 'Passw0rd'
+
+  pre_tasks:
+    - name: 'Create a mysql user'
+      community.mysql.mysql_user:
+        name: '{{ mysqld_exporter_mysqld_user }}'
+        password: '{{ mysqld_exporter_mysqld_password }}'
+        host: 'localhost'
+        priv: '*.*:SELECT,PROCESS,REPLICATION CLIENT'
+        resource_limits:
+          MAX_USER_CONNECTIONS: 3
+        state: present
+
+  roles:
+    - role: antmelekhin.mysqld_exporter

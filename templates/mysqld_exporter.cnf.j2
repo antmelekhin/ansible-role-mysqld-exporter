@@ -1,7 +1,11 @@
 {{ ansible_managed | comment }}
 
 [client]
-user = {{ mysqld_exporter_mysql_user }}
-password = {{ mysqld_exporter_mysql_password }}
-host = {{ mysqld_exporter_mysql_host }}
-port = {{ mysqld_exporter_mysql_port }}
+user = {{ mysqld_exporter_mysqld_user }}
+password = {{ mysqld_exporter_mysqld_password }}
+{% if mysqld_exporter_mysqld_host | length %}
+host = {{ mysqld_exporter_mysqld_host }}
+port = {{ mysqld_exporter_mysqld_port }}
+{% else %}
+socket = {{ mysqld_exporter_mysqld_socket }}
+{% endif %}

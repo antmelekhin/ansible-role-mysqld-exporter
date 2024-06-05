@@ -7,16 +7,27 @@
     - name: 'Gathering Service Facts'
       ansible.builtin.service_facts:
 
-    - name: 'Assert that mysqld_exporter service is enabled and running'
+    - name: 'Assert that MySQLd Exporter is enabled and running'
       ansible.builtin.assert:
         that:
           - ansible_facts.services['mysqld_exporter.service'].state == 'running'
           - ansible_facts.services['mysqld_exporter.service'].status == 'enabled'
 
-    - name: 'Verify mysqld_exporter is responding to requests'
+    - name: 'Verify the MySQLd Exporter is responding to requests'
       ansible.builtin.uri:
         url: 'http://{{ ansible_host }}:9104/metrics'
-      register: __result
-      until: __result.status == 200
+      register: __mysqld_exporter_response
+      until: __mysqld_exporter_response.status == 200
       retries: 120
       delay: 5
+
+    - name: 'Check the current MySQLd Exporter version'
+      ansible.builtin.command:
+        cmd: '/usr/local/bin/mysqld_exporter --version'
+      failed_when: false
+      changed_when: false
+      register: __mysqld_exporter_version_check
+
+    - name: 'The MySQLd Exporter version output'
+      ansible.builtin.debug:
+        var: __mysqld_exporter_version_check.stderr_lines[0].split()[2]
