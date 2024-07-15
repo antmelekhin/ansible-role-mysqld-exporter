@@ -23,6 +23,7 @@
       ansible.builtin.get_url:
         url: '{{ mysqld_exporter_download_url }}/{{ mysqld_exporter_archive_name }}.tar.gz'
         dest: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}.tar.gz'
+        checksum: 'sha256:{{ mysqld_exporter_checksum_url }}'
         mode: 0644
       delegate_to: localhost
       check_mode: false
