@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.0...v1.3.1) (2024-07-15)
+
+
+### Fixes
+
+* add `mysqld_exporter_checksum_url` variable ([10bdbdb](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/10bdbdb61305a6459f81c0caa3fcddc6bbd188d7))
+
+
+### Tests
+
+* clean version output in the `default` scenario ([3690e12](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/3690e12b24d83418564f7e73d5f2b96312b6ea31))
+
 ## [1.3.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.2.5...v1.3.0) (2024-06-05)
 
 
