@@ -30,4 +30,4 @@
 
     - name: 'The MySQLd Exporter version output'
       ansible.builtin.debug:
-        var: __mysqld_exporter_version_check.stderr_lines[0].split()[2]
+        msg: 'The current MySQLd Exporter version is {{ __mysqld_exporter_version_check.stderr_lines[0].split()[2] }}'
