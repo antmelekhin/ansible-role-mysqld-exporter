@@ -30,7 +30,7 @@ Role Variables
 --------------
 
 - `mysqld_exporter_version` The version of MySQLd Exporter to install (default: `0.15.1`).
-- `mysqld_exporter_archive_name` The MySQLd Exporter archive name without an extension (default: `mysqld_exporter-0.15.1.linux-{{ _mysqld_exporter_architecture }}.tar.gz`).
+- `mysqld_exporter_archive_name` The MySQLd Exporter archive name without an extension (default: `mysqld_exporter-0.15.1.linux-{{ _mysqld_exporter_architecture }}`).
 - `mysqld_exporter_download_url` The MySQLd Exporter archive download URL (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
 - `mysqld_exporter_checksum_url` The MySQLd Exporter checksum file URL (default: `{{ mysqld_exporter_download_url }}/sha256sums.txt`).
 - `mysqld_exporter_download_path` Local path to download and extract the archive (default: `/tmp`).
