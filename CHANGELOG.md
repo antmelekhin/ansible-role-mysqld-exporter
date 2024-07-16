@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.1...v1.3.2) (2024-07-16)
+
+
+### Documentation
+
+* **README:** update documentation ([e6e160d](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/e6e160d633721356140753f5d4a11f0c7ed55e9f))
+
+
+### Fixes
+
+* revert the value of `mysqld_exporter_archive_name` variable ([e1b68a5](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/e1b68a522e227e5ec035c01609cc7e729e3558f2))
+* update `mysqld_exporter_archive_name` variable ([dd4c0ac](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/dd4c0acdb626356c19abc66897f4b1895b20a5b1))
+
 ## [1.3.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.0...v1.3.1) (2024-07-15)
 
 
