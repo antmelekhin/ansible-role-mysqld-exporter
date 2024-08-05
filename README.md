@@ -29,27 +29,9 @@ Requirements
 Role Variables
 --------------
 
-- `mysqld_exporter_version` The version of MySQLd Exporter to install (default: `0.15.1`).
-- `mysqld_exporter_archive_name` The MySQLd Exporter archive name without an extension (default: `mysqld_exporter-0.15.1.linux-{{ _mysqld_exporter_architecture }}`).
-- `mysqld_exporter_download_url` The MySQLd Exporter archive download URL (default: `https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1`).
-- `mysqld_exporter_checksum_url` The MySQLd Exporter checksum file URL (default: `{{ mysqld_exporter_download_url }}/sha256sums.txt`).
-- `mysqld_exporter_download_path` Local path to download and extract the archive (default: `/tmp`).
-- `mysqld_exporter_user` and `mysqld_exporter_group` System user and group that will be created (default: `mysqld_exporter`).
-- `mysqld_exporter_install_path` The MySQLd Exporter installation directory (default: `/usr/local/bin`).
-- `mysqld_exporter_config_path` The MySQLd Exporter directory, that contains the MySQL Server connection settings (default: `/etc/mysqld_exporter`).
-- `mysqld_exporter_mysqld_user` and `mysqld_exporter_mysqld_password` (`Required`) The target MySQL Server username and password. Please refer to [the official documentation](https://github.com/prometheus/mysqld_exporter#required-grants) for a description of the required grants for a MySQL user.
-- `mysqld_exporter_mysqld_host`The target MySQL Server host (default: `''`).
-- `mysqld_exporter_mysqld_port` The target MySQL Server port (default: `3306`).
-- `mysqld_exporter_mysqld_socket` The target MySQL Server unix socket (default: `/run/mysqld/mysqld.sock`).
-- `mysqld_exporter_web_listen_address` The address to listen for the web interface and telemetry (default: `0.0.0.0`).
-- `mysqld_exporter_web_listen_port` The port number that MySQLd Exporter listens on (default: `9104`).
-- `mysqld_exporter_web_telemetry_path` The path to expose metrics (default: `/metrics`).
-- `mysqld_exporter_log_level` The MySQLd Exporter logging level. Supported levels are: `debug`, `info`, `warn`, `error` (default: `info`).
-- `mysqld_exporter_log_format` A log message format. Supported formats are: `logfmt`, `json` (default: `logfmt`).
-- `mysqld_exporter_tls_server_config` Certificate and key files for server to use to authenticate to client (default: `{}`).
-- `mysqld_exporter_http_server_config` Enable HTTP/2 support (default: `{}`). Note that HTTP/2 is only supported with TLS.
-- `mysqld_exporter_basic_auth_users` Users and password for basic authentication (default: `{}`). Passwords are automatically hashed with bcrypt.
-- `mysqld_exporter_collectors` A list of collectors to use (default: `[]`). See [the official documentation](https://github.com/prometheus/mysqld_exporter#collector-flags) for a list of available collector flags.
+All variables that can be overridden are stored in the [defaults/main.yml](defaults/main.yml) file.
+Please refer to the [meta/argument_specs.yml](meta/argument_specs.yml) file for a description of the available variables.
+Similarly, descriptions and defaults for preset variables can be found in the [vars/main.yml](vars/main.yml) file.
 
 Dependencies
 ------------
