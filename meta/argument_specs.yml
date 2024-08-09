@@ -97,8 +97,7 @@ argument_specs:
         description: 'Certificate and key files for server to use to authenticate to client'
       mysqld_exporter_http_server_config:
         type: 'dict'
-        description:
-          - 'Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.'
+        description: 'Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.'
       mysqld_exporter_basic_auth_users:
         type: 'dict'
         description: 'Users and password for basic authentication. Passwords are automatically hashed with bcrypt.'
@@ -106,3 +105,4 @@ argument_specs:
         type: 'list'
         elements: 'str'
         description: 'Comma-separated list of collectors to use.'
+        default: []
