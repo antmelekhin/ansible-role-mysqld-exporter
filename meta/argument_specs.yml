@@ -87,7 +87,7 @@ argument_specs:
         default: 'info'
       mysqld_exporter_log_format:
         type: 'str'
-        description: 'A log message format.'
+        description: 'A log message output format.'
         choices:
           - 'logfmt'
           - 'json'
