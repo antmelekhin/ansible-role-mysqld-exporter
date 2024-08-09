@@ -1,0 +1,108 @@
+---
+argument_specs:
+  main:
+    short_description: 'MySQLd Exporter'
+    description:
+      - 'An Ansible role to install, configure and update the L(MySQLd Exporter,https://github.com/prometheus/mysqld_exporter).'
+    author:
+      - 'Melekhin Anton'
+    options:
+      mysqld_exporter_version:
+        type: 'str'
+        description: 'The version of MySQLd Exporter to install.'
+        default: '0.15.1'
+      mysqld_exporter_archive_name:
+        type: 'str'
+        description: 'The MySQLd Exporter archive name without an extension.'
+        default: 'mysqld_exporter-{{ mysqld_exporter_version }}.linux-{{ __mysqld_exporter_architecture }}'
+      mysqld_exporter_download_url:
+        type: 'str'
+        description: 'The MySQLd Exporter archive download URL.'
+        default: 'https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}'
+      mysqld_exporter_checksum_url:
+        type: 'str'
+        description: 'The MySQLd Exporter checksum file URL.'
+        default: '{{ mysqld_exporter_download_url }}/sha256sums.txt'
+      mysqld_exporter_download_path:
+        type: 'path'
+        description: 'Local path to download and extract the archive.'
+        default: '/tmp'
+      mysqld_exporter_user:
+        type: 'str'
+        description: 'System user that will be created.'
+        default: 'mysqld_exporter'
+      mysqld_exporter_group:
+        type: 'str'
+        description: 'System group that will be created.'
+        default: '{{ mysqld_exporter_user }}'
+      mysqld_exporter_install_path:
+        type: 'path'
+        description: 'The MySQLd Exporter installation directory.'
+        default: '/usr/local/bin'
+      mysqld_exporter_config_path:
+        type: 'path'
+        description: 'The MySQLd Exporter directory, that contains the MySQL Server connection settings.'
+        default: '/etc/mysqld_exporter'
+      mysqld_exporter_mysqld_user:
+        type: 'str'
+        required: true
+        description:
+          - 'The target MySQL Server username.'
+          - 'Please refer to L(the official documentation,https://github.com/prometheus/mysqld_exporter#required-grants) for a description of the required grants for a MySQL user.'
+      mysqld_exporter_mysqld_password:
+        type: 'str'
+        required: true
+        description: 'The target MySQL Server password.'
+      mysqld_exporter_mysqld_host:
+        type: 'str'
+        description: 'The target MySQL Server host.'
+      mysqld_exporter_mysqld_port:
+        type: 'int'
+        description: 'The target MySQL Server port.'
+        default: 3306
+      mysqld_exporter_mysqld_socket:
+        type: 'str'
+        description: 'The target MySQL Server unix socket.'
+        default: '/run/mysqld/mysqld.sock'
+      mysqld_exporter_web_listen_address:
+        type: 'str'
+        description: 'The address to listen for the web interface and telemetry.'
+        default: '0.0.0.0'
+      mysqld_exporter_web_listen_port:
+        type: 'int'
+        description: 'The port number that MySQLd Exporter listens on.'
+        default: 9104
+      mysqld_exporter_web_telemetry_path:
+        type: 'str'
+        description: 'The path to expose metrics.'
+        default: '/metrics'
+      mysqld_exporter_log_level:
+        type: 'str'
+        description: 'The MySQLd Exporter logging level.'
+        choices:
+          - 'debug'
+          - 'info'
+          - 'warn'
+          - 'error'
+        default: 'info'
+      mysqld_exporter_log_format:
+        type: 'str'
+        description: 'A log message output format.'
+        choices:
+          - 'logfmt'
+          - 'json'
+        default: 'logfmt'
+      mysqld_exporter_tls_server_config:
+        type: 'dict'
+        description: 'Certificate and key files for server to use to authenticate to client'
+      mysqld_exporter_http_server_config:
+        type: 'dict'
+        description: 'Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS.'
+      mysqld_exporter_basic_auth_users:
+        type: 'dict'
+        description: 'Users and password for basic authentication. Passwords are automatically hashed with bcrypt.'
+      mysqld_exporter_collectors:
+        type: 'list'
+        elements: 'str'
+        description: 'Comma-separated list of collectors to use.'
+        default: []
