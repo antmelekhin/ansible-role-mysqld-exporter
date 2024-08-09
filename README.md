@@ -29,9 +29,9 @@ Requirements
 Role Variables
 --------------
 
-All variables that can be overridden are stored in the [defaults/main.yml](defaults/main.yml) file.
-Please refer to the [meta/argument_specs.yml](meta/argument_specs.yml) file for a description of the available variables.
-Similarly, descriptions and defaults for preset variables can be found in the [vars/main.yml](vars/main.yml) file.
+All variables that can be overridden are stored in the [defaults/main.yml](https://github.com/antmelekhin/ansible-role-mysqld-exporter/blob/main/defaults/main.yml) file.
+Please refer to the [meta/argument_specs.yml](https://github.com/antmelekhin/ansible-role-mysqld-exporter/blob/main/meta/argument_specs.yml) file for a description of the available variables.
+Similarly, descriptions and defaults for preset variables can be found in the [vars/main.yml](https://github.com/antmelekhin/ansible-role-mysqld-exporter/blob/main/vars/main.yml) file.
 
 Dependencies
 ------------
@@ -67,8 +67,8 @@ Install and configure the `MySQLd Exporter`. Also, you need to create a user to 
 
   roles:
     - role: antmelekhin.mysqld_exporter
-      mysqld_exporter_mysql_user: '{{ exporter_user_name }}'
-      mysqld_exporter_mysql_password: '{{ exporter_user_password }}'
+      mysqld_exporter_mysqld_user: '{{ exporter_user_name }}'
+      mysqld_exporter_mysqld_password: '{{ exporter_user_password }}'
 ```
 
 Install and configure the `MySQLd Exporter` with TLS certificate and basic authentication feature.
@@ -79,8 +79,8 @@ Install and configure the `MySQLd Exporter` with TLS certificate and basic authe
   hosts: all
   roles:
     - role: antmelekhin.mysqld_exporter
-      mysqld_exporter_mysql_user: 'exporter'
-      mysqld_exporter_mysql_password: 'Pa$$w0rd'
+      mysqld_exporter_mysqld_user: 'exporter'
+      mysqld_exporter_mysqld_password: 'Pa$$w0rd'
       mysqld_exporter_tls_server_config:
         cert_file: '/etc/ssl/certs/mysqld_exporter.cert'
         key_file: '/etc/ssl/private/mysqld_exporter.key'
