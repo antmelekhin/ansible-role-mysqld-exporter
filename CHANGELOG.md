@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.2...v1.4.0) (2024-08-09)
+
+
+### Features
+
+* add `meta/argument_specs.yml` file  ([#13](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/13)) ([35d3c0a](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/35d3c0ad3cb50a3dbcabc39deee3007d48f2e575))
+
 ## [1.3.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.1...v1.3.2) (2024-07-16)
 
 
