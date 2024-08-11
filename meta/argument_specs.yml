@@ -104,5 +104,5 @@ argument_specs:
       mysqld_exporter_collectors:
         type: 'list'
         elements: 'str'
-        description: 'Comma-separated list of collectors to use.'
+        description: 'A list of collectors to use.'
         default: []
