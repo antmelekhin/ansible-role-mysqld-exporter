@@ -38,7 +38,8 @@
       delegate_to: localhost
       check_mode: false
 
-    - name: 'Copy the MySQLd Exporter binary into a place'
+    - name: 'Copy the MySQLd Exporter binary to a target host'
+      become: true
       ansible.builtin.copy:
         src: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}/mysqld_exporter'
         dest: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
@@ -47,4 +48,3 @@
         mode: 0755
       notify: 'Restart the MySQLd Exporter'
       when: not ansible_check_mode
-      become: true
