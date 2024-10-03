@@ -20,6 +20,7 @@
       mysqld_exporter_version not in __mysqld_exporter_version_check.stdout_lines[0].split()[2] )
   block:
     - name: 'Download the MySQLd Exporter archive to a local folder'
+      become: false
       ansible.builtin.get_url:
         url: '{{ mysqld_exporter_download_url }}/{{ mysqld_exporter_archive_name }}.tar.gz'
         dest: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}.tar.gz'
@@ -29,6 +30,7 @@
       check_mode: false
 
     - name: 'Unarchive the MySQLd Exporter binary'
+      become: false
       ansible.builtin.unarchive:
         src: '{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_archive_name }}.tar.gz'
         dest: '{{ mysqld_exporter_download_path }}'
