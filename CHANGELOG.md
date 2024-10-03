@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.4.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.4.0...v1.4.1) (2024-10-03)
+
+
+### Documentation
+
+* fix description for `mysqld_exporter_collectors` variable ([306ccf8](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/306ccf86f82fad65c2c9f2c77e34e59b758c3e53))
+
+
+### Fixes
+
+* add `become: false` to localhost delegated tasks ([e59707f](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/e59707f5a63c74a1d867d09ef801a28489693ce9))
+
+
+### Styles
+
+* minor fixes ([9f97560](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/9f9756093e6fd84b9d78ce8fb1ee02c59b801cc7))
+
 ## [1.4.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.3.2...v1.4.0) (2024-08-09)
 
 
