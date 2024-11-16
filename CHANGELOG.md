@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.4.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.4.1...v1.4.2) (2024-11-16)
+
+
+### Continuous Integration
+
+* use `ubuntu-22.04` instead of `ubuntu-latest` ([11522fb](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/11522fb6198d932738e8431b1d7be6e166120578))
+* used `tox` instead `gofrolist/molecule-action` ([#15](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/15)) ([10aa245](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/10aa245c23fb3be32ebe8a9bf3d5f22494d4b204))
+
+
+### Fixes
+
+* **version:** mysqld_exporter updated to `0.16.0` release ([#14](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/14)) ([d3b1503](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/d3b150312b5f200707429c2efc00f601123f14a3))
+
+
+### Styles
+
+* updated indents in jinja templates ([b8f108d](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/b8f108de3bae53ede046fd196830e6863dbcd80a))
+
 ## [1.4.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.4.0...v1.4.1) (2024-10-03)
 
 
