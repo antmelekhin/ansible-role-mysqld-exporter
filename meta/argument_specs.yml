@@ -9,7 +9,7 @@ argument_specs:
       mysqld_exporter_version:
         type: 'str'
         description: 'The version of MySQLd Exporter to install.'
-        default: '0.15.1'
+        default: '0.16.0'
       mysqld_exporter_archive_name:
         type: 'str'
         description: 'The MySQLd Exporter archive name without an extension.'
