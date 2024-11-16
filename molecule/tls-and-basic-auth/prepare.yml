@@ -16,8 +16,9 @@
     - name: 'Install the dependencies for basic authentication and certificate generation'
       ansible.builtin.pip:
         name:
+          - 'bcrypt==4.0.1'
           - 'cryptography'
-          - 'passlib[bcrypt]'
+          - 'passlib'
 
     - name: 'Create a private key (RSA, 4096 bits)'
       community.crypto.openssl_privatekey:
