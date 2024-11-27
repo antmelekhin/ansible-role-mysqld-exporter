@@ -6,7 +6,7 @@ An Ansible role to install, configure and update the [MySQLd Exporter](https://g
 Requirements
 ------------
 
-- Supported version of Ansible: 2.12 and highter.
+- Supported version of Ansible: 2.12 and higher. Systems with Python versions below than 3.7 are not compatible with ansible-core 2.17 (see [ansible/ansible#83357](https://github.com/ansible/ansible/issues/83357#issuecomment-2150254754)).
 - `gnu-tar` on Mac as deployer host (`brew install gnu-tar`).
 - `passlib` on a deployer host when using the basic authentication feature (`python3 -m pip install passlib[bcrypt]`).
 - `cryptography` or `pyOpenSSL` on a deployer host when using the TLS feature.
@@ -36,7 +36,13 @@ Similarly, descriptions and defaults for preset variables can be found in the [v
 Dependencies
 ------------
 
-None.
+When using Ansible core, you will also need to install the following Ansible collections:
+
+```yaml
+---
+collections:
+  - name: community.general
+```
 
 Example Playbook
 ----------------
