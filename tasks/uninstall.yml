@@ -1,0 +1,42 @@
+---
+- name: 'Uninstall the MySQLd Exporter'
+  become: true
+  block:
+    - name: 'Check if MySQLd Exporter systemd service is existed'
+      ansible.builtin.stat:
+        path: '/etc/systemd/system/mysqld_exporter.service'
+      register: __mysqld_exporter_unit_file
+
+    - name: 'Ensure the MySQLd Exporter is stopped and disabled at boot'
+      ansible.builtin.systemd:
+        name: 'mysqld_exporter'
+        state: 'stopped'
+        enabled: false
+      when: __mysqld_exporter_unit_file.stat.exists
+
+    - name: 'Remove the MySQLd Exporter systemd service'
+      ansible.builtin.file:
+        path: '/etc/systemd/system/mysqld_exporter.service'
+        state: 'absent'
+      notify: 'Systemd daemon-reload'
+
+    - name: 'Remove the MySQLd Exporter binary'
+      ansible.builtin.file:
+        path: '{{ mysqld_exporter_install_path }}/mysqld_exporter'
+        state: 'absent'
+
+    - name: 'Remove a MySQLd Exporter configuration directory'
+      ansible.builtin.file:
+        path: '{{ mysqld_exporter_config_path }}'
+        state: 'absent'
+
+    - name: 'Remove a MySQLd Exporter user'
+      ansible.builtin.user:
+        name: '{{ mysqld_exporter_user }}'
+        state: 'absent'
+        remove: true
+
+    - name: 'Remove a MySQLd Exporter group'
+      ansible.builtin.group:
+        name: '{{ mysqld_exporter_group }}'
+        state: 'absent'

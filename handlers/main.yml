@@ -6,3 +6,8 @@
     daemon_reload: true
     state: 'restarted'
   when: not ansible_check_mode
+
+- name: 'Systemd daemon-reload'
+  ansible.builtin.systemd:
+    daemon_reload: true
+  when: not ansible_check_mode
