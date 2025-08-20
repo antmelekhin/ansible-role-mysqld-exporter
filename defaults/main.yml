@@ -1,4 +1,6 @@
 ---
+mysqld_exporter_setup: 'install'
+
 # See available releases: https://github.com/prometheus/mysqld_exporter/releases
 mysqld_exporter_version: '0.17.2'
 mysqld_exporter_archive_name: 'mysqld_exporter-{{ mysqld_exporter_version }}.linux-{{ __mysqld_exporter_architecture }}'

@@ -9,12 +9,20 @@
     - mysqld_exporter_mysqld_password
   loop_control:
     loop_var: required_vars
+  when: mysqld_exporter_setup in ['install','upgrade']
 
 - name: 'Prepare for installing the MySQLd Exporter'
   ansible.builtin.import_tasks: 'pre-install.yml'
+  when: mysqld_exporter_setup in ['install','upgrade']
 
 - name: 'Install the MySQLd Exporter'
   ansible.builtin.import_tasks: 'install.yml'
+  when: mysqld_exporter_setup in ['install','upgrade']
 
 - name: 'Configure the MySQLd Exporter'
   ansible.builtin.import_tasks: 'configure.yml'
+  when: mysqld_exporter_setup in ['install','upgrade']
+
+- name: 'Uninstall the MySQLd Exporter'
+  ansible.builtin.import_tasks: 'uninstall.yml'
+  when: mysqld_exporter_setup in ['uninstall']
