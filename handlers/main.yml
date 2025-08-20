@@ -8,6 +8,7 @@
   when: not ansible_check_mode
 
 - name: 'Systemd daemon-reload'
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
   when: not ansible_check_mode
