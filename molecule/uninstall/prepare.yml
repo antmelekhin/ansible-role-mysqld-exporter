@@ -1,0 +1,16 @@
+---
+- name: 'Prepare an Ansible host for GitHub Actions'
+  hosts: localhost
+  tasks:
+    - name: 'Install tar for tasks delegated to the localhost'
+      community.general.apk:
+        name: 'tar'
+        update_cache: true
+      when: ansible_os_family == 'Alpine'
+
+- name: 'Install the MySQLd Exporter'
+  hosts: all
+  roles:
+    - role: antmelekhin.mysqld_exporter
+      mysqld_exporter_mysqld_user: 'exporter'
+      mysqld_exporter_mysqld_password: 'Pa$$word'

@@ -1,0 +1,35 @@
+---
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: 'Check if MySQLd Exporter is installed'
+      ansible.builtin.stat:
+        path: '/usr/local/bin/mysqld_exporter'
+      register: __mysqld_exporter_is_installed
+      failed_when: __mysqld_exporter_is_installed['stat']['exists'] | bool
+      check_mode: true
+
+    - name: 'Check if MySQLd Exporter service is running'
+      ansible.builtin.systemd:
+        name: 'mysqld_exporter'
+        state: 'started'
+        enabled: true
+      register: __mysqld_exporter_service
+      failed_when: __mysqld_exporter_service is changed
+      check_mode: true
+
+    - name: 'Check mysqld_exporter.cnf does not exist'
+      ansible.builtin.stat:
+        path: '/etc/mysqld_exporter/mysqld_exporter.cnf'
+      register: __mysqld_exporter_config
+      failed_when: __mysqld_exporter_config['stat']['exists'] | bool
+      check_mode: true
+
+    - name: 'Check web_config.yaml does not exist'
+      ansible.builtin.stat:
+        path: '/etc/mysqld_exporter/web_config.yaml'
+      register: __mysqld_exporter_config
+      failed_when: __mysqld_exporter_config['stat']['exists'] | bool
+      check_mode: true

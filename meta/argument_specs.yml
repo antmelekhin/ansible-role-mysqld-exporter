@@ -6,6 +6,14 @@ argument_specs:
       - 'An Ansible role to install, configure and update the L(MySQLd Exporter,https://github.com/prometheus/mysqld_exporter).'
     author: 'Melekhin Anton'
     options:
+      mysqld_exporter_setup:
+        type: 'str'
+        description: ''
+        choices:
+          - 'install'
+          - 'upgrade'
+          - 'uninstall'
+        default: 'install'
       mysqld_exporter_version:
         type: 'str'
         description: 'The version of MySQLd Exporter to install.'
