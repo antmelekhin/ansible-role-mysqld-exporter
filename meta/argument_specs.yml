@@ -8,7 +8,11 @@ argument_specs:
     options:
       mysqld_exporter_setup:
         type: 'str'
-        description: ''
+        description:
+          - 'Specify whether you want to install, upgrade to the latest version, or remove MySQLd Exporter.'
+          - "Using 'install' will install the latest version of MySQLd Exporter on a fresh install."
+          - "Using 'upgrade' will upgrade MySQLd Exporter to the latest version of on every playbook execution."
+          - "Using 'uninstall' will remove MySQLd Exporter from your system."
         choices:
           - 'install'
           - 'upgrade'
