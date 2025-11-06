@@ -15,9 +15,9 @@
   when:
     - not __mysqld_exporter_is_installed.stat.exists or
       ( __mysqld_exporter_version_check.stderr_lines | length and
-      mysqld_exporter_version not in __mysqld_exporter_version_check.stderr_lines[0].split()[2] ) or
+      mysqld_exporter_version not in __mysqld_exporter_version_check.stderr_lines[0].split()[2] and 'upgrade' in mysqld_exporter_setup ) or
       ( __mysqld_exporter_version_check.stdout_lines | length and
-      mysqld_exporter_version not in __mysqld_exporter_version_check.stdout_lines[0].split()[2] )
+      mysqld_exporter_version not in __mysqld_exporter_version_check.stdout_lines[0].split()[2] and 'upgrade' in mysqld_exporter_setup )
   block:
     - name: 'Download the MySQLd Exporter archive to a local folder'
       become: false
