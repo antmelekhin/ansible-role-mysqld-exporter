@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.4.5...v1.5.0) (2025-11-06)
+
+
+### Features
+
+* add `mysqld_exporter_setup` variable ([#17](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/17)) ([7823630](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/7823630c261b12683277da964faa612f0adc8667))
+
 ## [1.4.5](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.4.4...v1.4.5) (2025-10-02)
 
 
