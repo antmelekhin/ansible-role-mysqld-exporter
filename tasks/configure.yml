@@ -29,9 +29,9 @@
         mode: 0640
       notify: 'Restart the MySQLd Exporter'
       when:
-        - mysqld_exporter_tls_server_config | length or
-          mysqld_exporter_http_server_config | length or
-          mysqld_exporter_basic_auth_users | length
+        - mysqld_exporter_tls_server_config | length > 0 or
+          mysqld_exporter_http_server_config | length > 0 or
+          mysqld_exporter_basic_auth_users | length > 0
 
     - name: 'Ensure the MySQLd Exporter is running and enabled at boot'
       ansible.builtin.systemd:
