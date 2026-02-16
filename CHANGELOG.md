@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.1...v1.5.2) (2026-02-16)
+
+
+### Fixes
+
+* make conditions work with newer ansible versions ([#19](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/19)) ([689d607](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/689d6078c67823723e96a3ecf43862eca0075b60))
+
 ## [1.5.1](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.0...v1.5.1) (2025-11-06)
 
 
