@@ -1,14 +1,16 @@
 ---
-- name: 'Check that required string variables are defined'
+- name: 'Check that mysqld_exporter_mysqld_user variable value are not empty'
   ansible.builtin.assert:
-    that: '{{ required_vars }} is defined and {{ required_vars }}'
-    fail_msg: '{{ required_vars }} needs to be set for the role to work'
-    success_msg: 'Required variables {{ required_vars }} is defined'
-  loop:
-    - mysqld_exporter_mysqld_user
-    - mysqld_exporter_mysqld_password
-  loop_control:
-    loop_var: required_vars
+    that: '{{ mysqld_exporter_mysqld_user | length > 0 }}'
+    fail_msg: 'mysqld_exporter_mysqld_user needs to be set for the role to work'
+    success_msg: 'Required variable mysqld_exporter_mysqld_user is defined'
+  when: mysqld_exporter_setup in [ 'install', 'upgrade' ]
+
+- name: 'Check that mysqld_exporter_mysqld_password variable value are not empty'
+  ansible.builtin.assert:
+    that: '{{ mysqld_exporter_mysqld_password | length > 0 }}'
+    fail_msg: 'mysqld_exporter_mysqld_password needs to be set for the role to work'
+    success_msg: 'Required variable mysqld_exporter_mysqld_password is defined'
   when: mysqld_exporter_setup in [ 'install', 'upgrade' ]
 
 - name: 'Prepare for installing the MySQLd Exporter'
