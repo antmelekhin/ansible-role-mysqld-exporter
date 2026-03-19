@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.2...v1.5.3) (2026-03-19)
+
+
+### Fixes
+
+* use newer style ansible facts and update assert jobs ([61cb94d](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/61cb94d9338dc5e7075ff2c9790ffabc48c541d6))
+
+
+### Styles
+
+* update when ([f1f7770](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/f1f7770f8cd9acab70ac061c5c192446e230b872))
+
 ## [1.5.2](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.1...v1.5.2) (2026-02-16)
 
 
