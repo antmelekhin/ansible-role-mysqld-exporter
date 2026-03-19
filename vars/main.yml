@@ -6,4 +6,4 @@ __mysqld_exporter_architecture_dict:
   armv7l: 'armv7'
   armv6l: 'armv6'
 
-__mysqld_exporter_architecture: '{{ __mysqld_exporter_architecture_dict[ansible_architecture] | default(ansible_architecture) }}'
+__mysqld_exporter_architecture: "{{ __mysqld_exporter_architecture_dict[ansible_facts['architecture']] | default(ansible_facts['architecture']) }}"
