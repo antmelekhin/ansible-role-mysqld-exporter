@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.4](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.3...v1.5.4) (2026-03-19)
+
+
+### Fixes
+
+* **version:** mysqld_exporter updated to `0.19.0` release ([#20](https://github.com/antmelekhin/ansible-role-mysqld-exporter/issues/20)) ([780d8e9](https://github.com/antmelekhin/ansible-role-mysqld-exporter/commit/780d8e9feb748d33c396d62268cd0c121a5cc8e3))
+
 ## [1.5.3](https://github.com/antmelekhin/ansible-role-mysqld-exporter/compare/v1.5.2...v1.5.3) (2026-03-19)
 
 
