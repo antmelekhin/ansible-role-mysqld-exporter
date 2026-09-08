@@ -7,7 +7,7 @@
 
   pre_tasks:
     - name: 'Create a mysql user'
-      community.mysql.mysql_user:
+      ansible.mysql.mysql_user:
         name: '{{ mysqld_exporter_mysqld_user }}'
         password: '{{ mysqld_exporter_mysqld_password }}'
         host: 'localhost'
