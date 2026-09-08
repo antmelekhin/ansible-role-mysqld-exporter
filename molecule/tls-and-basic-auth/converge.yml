@@ -17,13 +17,13 @@
         state: 'directory'
         owner: 'root'
         group: 'root'
-        mode: 0755
+        mode: '0755'
 
     - name: 'Copy the certificate and key'
       ansible.builtin.copy:
         src: '{{ cert.src }}'
         dest: '{{ cert.dest }}'
-        mode: 0644
+        mode: '0644'
       loop:
         - src: '/tmp/certificate.cert'
           dest: '{{ mysqld_exporter_tls_server_config.cert_file }}'
