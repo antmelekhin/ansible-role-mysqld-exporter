@@ -1,7 +1,9 @@
 ---
 collections:
   - name: community.crypto
+    version: '>=2.26.6,<3.0.0'
   - name: community.general
+    version: '>=12.6.5,<13.0.0'
   - name: community.mysql
 
 roles:
